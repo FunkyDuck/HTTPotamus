@@ -1,0 +1,33 @@
+@use 'colors';
+
+nav {
+    width: 98dvw;
+    height: 8dvh;
+    margin: 0;
+    padding: 1dvh 1dvw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: colors.$dark-secondary;
+    
+    h1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        line-height: 8dvh;
+        justify-content: start;
+        align-items: center;
+        font-weight: 900;
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 8dvh;
+        }
+        
+        p {
+            margin-left: 0.5dvw;
+            font-size: 4rem;
+        }
+    }
+}

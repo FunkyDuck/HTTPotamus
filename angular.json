@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "RamenHippo": {
+    "HTTPotamus": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,7 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ramen-hippo",
+            "outputPath": "dist/htt-potamus",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -53,12 +53,17 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
+              "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -89,10 +94,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "RamenHippo:build:production"
+              "buildTarget": "HTTPotamus:build:production"
             },
             "development": {
-              "buildTarget": "RamenHippo:build:development"
+              "buildTarget": "HTTPotamus:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -112,12 +117,17 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
+              "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           }
         }
