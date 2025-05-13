@@ -1,5 +1,12 @@
 <form id="url-search">
-    <label for="url">URL</label>
-    <input type="url">
-    <button type="button">Slurp !</button>
+    <select>
+        <option>GET</option>
+        <option>POST</option>
+        <option>PUT</option>
+        <option>DELETE</option>
+    </select>
+    <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale">
+    <button type="button" (click)="sendRequest()">Slurp !</button>
 </form>
+
+<section></section>

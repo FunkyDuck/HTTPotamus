@@ -59,12 +59,15 @@
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
+              "node_modules/prismjs/themes/prism-okaidia.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "scripts": []
+            "scripts": [
+              "node_modules/prismjs/prism.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,12 +126,15 @@
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
+              "node_modules/prismjs/themes/prism-okaidia.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "scripts": []
+            "scripts": [
+              "node_modules/prismjs/prism.js"
+            ]
           }
         }
       }

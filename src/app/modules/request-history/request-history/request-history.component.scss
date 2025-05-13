@@ -1,0 +1,21 @@
+@use 'colors';
+nav {
+    width: 20dvw;
+    
+    h2 {
+        height: 10dvh;
+        width: 18dvw;
+        margin: auto;
+        line-height: 10dvh;
+        font-size: 2rem;
+    }
+    
+    ul {
+        width: 15dvw;
+        margin: auto;
+        height: 80dvh;
+        overflow-y: scroll;
+        scrollbar-color: colors.$green colors.$dark-main;
+        scrollbar-width: thin;
+    }
+}

@@ -1,0 +1,59 @@
+@use 'colors';
+
+section {
+    width: 70dvw;
+    height: 60dvh;
+    margin: auto;
+    
+    div {
+        height: 5dvh;
+        line-height: 5dvh;
+        align-items: center;
+
+        button {
+            box-sizing: border-box;
+            height: 3.5dvh;
+            font-size: 1rem;
+            border: 1px solid colors.$green;
+            outline: none;
+            color: colors.$dark-secondary;
+            font-weight: 500;
+            // width: 10dvw;
+            border-left: none;
+            padding: 0 1dvw;
+            cursor: pointer;
+            background: colors.$grey-secondary;
+            transition: background 0.2s ease;
+            
+            &:first-child {
+                border-radius: 8px 0 0 8px;
+            }
+
+            &:last-child {
+                border-radius: 0 8px 8px 0;
+            }
+
+            &:hover {
+                background: darken(colors.$grey-main, 20%);
+            }
+
+            &.selected {
+                background: colors.$grey-main;
+            }
+        }
+    }
+
+    pre {
+        width: 70dvw;
+        height: 40dvh;
+        margin: auto;
+        display: none;
+        overflow: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: colors.$green colors.$dark-main;
+
+        &.selected {
+            display: block;
+        }
+    }
+}

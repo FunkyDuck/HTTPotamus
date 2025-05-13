@@ -1,7 +1,59 @@
+@use 'colors';
+
 form {
-    width: 90dvh;
+    width: 70dvw;
+    height: 10dvh;
     margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    // justify-content: space-between;
+    line-height: 10dvh;
+    align-items: center;
+
+    select, input, button {
+        box-sizing: border-box;
+        height: 3.5dvh;
+        font-size: 1rem;
+        border: 1px solid colors.$green;
+        outline: none;
+        color: colors.$dark-secondary;
+        font-weight: 500;
+    }
+
+    select {
+        width: 10dvw;
+        border-right: none;
+        border-radius: 8px 0 0 8px;
+        padding: 0 0.5dvw;
+        appearance: none;
+        background: colors.$grey-secondary;
+    }
+
+    input {
+        width: 40dvw;
+        flex: 1;
+        border-right: none;
+        border-left: none;
+        padding: 0 0.75dvw;
+    }
+
+    button {
+        width: 10dvw;
+        border-left: none;
+        border-radius: 0 8px 8px 0;
+        padding: 0 1dvw;
+        cursor: pointer;
+        background: colors.$grey-secondary;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: darken(colors.$grey-main, 20%);
+        }
+    }
+}
+
+section {
+    width: 70dvw;
+    height: 20dvh;
+    margin: auto;
 }

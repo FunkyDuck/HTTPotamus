@@ -1,1 +1,12 @@
-<p>response-viewer works!</p>
+<section>
+    <h2>Response</h2>
+    
+    <div>
+        <button id="btn-pretty" (click)="toggleFormat('pretty')" class="selected">Pretty</button>
+        <button id="btn-raw" (click)="toggleFormat('raw')">Raw</button>
+        <button>Copy</button>
+    </div>
+    
+    <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
+    <pre id="format-raw"><code>{{ jsonRaw }}</code></pre>
+</section>
