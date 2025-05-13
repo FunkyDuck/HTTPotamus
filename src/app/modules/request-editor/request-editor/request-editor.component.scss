@@ -1,6 +1,6 @@
 @use 'colors';
 
-form {
+form:first-child {
     width: 70dvw;
     height: 10dvh;
     margin: auto;
@@ -14,20 +14,44 @@ form {
         box-sizing: border-box;
         height: 3.5dvh;
         font-size: 1rem;
-        border: 1px solid colors.$green;
+        border: 1px solid colors.$green-main;
         outline: none;
         color: colors.$dark-secondary;
         font-weight: 500;
     }
 
-    select {
-        width: 10dvw;
-        border-right: none;
-        border-radius: 8px 0 0 8px;
-        padding: 0 0.5dvw;
-        appearance: none;
-        background: colors.$grey-secondary;
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 10dvw;
+            border: 1px solid colors.$green-main;
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            padding: 0 2dvw 0 0.5dvw;
+            height: 3.5dvh;
+            font-size: 1rem;
+            background: colors.$grey-secondary;
+            color: colors.$dark-secondary;
+            font-weight: 500;
+        }
+
+        &::after {
+            content: "▼";
+            position: absolute;
+            top: 50%;
+            right: 0.75dvw;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 0.9rem;
+            color: colors.$dark-secondary;
+        }
     }
+
 
     input {
         width: 40dvw;
@@ -52,8 +76,73 @@ form {
     }
 }
 
-section {
+form:last-child {
     width: 70dvw;
     height: 20dvh;
     margin: auto;
+    line-height: 3.5dvh;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    input {
+        width: 15dvw;
+        height: 3.5dvh;
+    }
+
+    /* Base styling for range input */
+    .styled-range {
+    appearance: none;
+    width: 5dvw;
+    height: 3.5dvh;
+    background: colors.$dark-main;
+    cursor: pointer;
+    border-radius: 1.25dvh;
+    border: 1px solid colors.$grey-secondary;
+
+    /* Track - Chrome */
+    &::-webkit-slider-runnable-track {
+        height: 3dvh;
+        border-radius: 1.25dvh;
+    }
+
+    /* Track - Firefox */
+    &::-moz-range-track {
+        height: 3dvh;
+        border-radius: 1.25dvh;
+    }
+
+    /* Thumb - Chrome */
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 3dvw;
+        height: 3.5dvh;
+        border-radius: 1.25dvh;
+        // border: 16px solid colors.$grey-secondary;
+        background-color: currentColor;
+        margin-top: -1.25dvh; /* Center the thumb */
+    }
+    
+    /* Thumb - Firefox */
+    &::-moz-range-thumb {
+        width: 3dvw;
+        height: 3.5dvh;
+        border-radius: 1.25dvh;
+        // border: 16px solid colors.$grey-secondary;
+        background-color: currentColor;
+        border: none;
+        // margin-top: 1.25dvh; /* Center the thumb */
+    }
+    }
+
+    /* Color variants */
+    .range-blue {
+    color: colors.$blue;
+    border: 1px solid colors.$grey-secondary;
+}
+
+.range-grey {
+    color: colors.$grey-secondary;
+    }
+
 }

@@ -1,12 +1,19 @@
 <section>
-    <h2>Response</h2>
+    <!-- <h2>Response</h2> -->
     
     <div>
-        <button id="btn-pretty" (click)="toggleFormat('pretty')" class="selected">Pretty</button>
-        <button id="btn-raw" (click)="toggleFormat('raw')">Raw</button>
-        <button>Copy</button>
+        <div>
+            <button id="btn-pretty" (click)="toggleFormat('pretty')" class="selected">Pretty</button>
+            <button id="btn-raw" (click)="toggleFormat('raw')">Raw</button>
+            <button (click)="copyToClipboard()">Copy</button>
+        </div>
+            
+        <div>
+            <article id="display-timer">Duration:&nbsp;<b>{{ duration }}ms</b></article>
+            <article id="display-status" [ngClass]="getClass()">Status:&nbsp;<b>{{ status }} {{ statusText }}</b></article>
+        </div>
     </div>
     
     <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
-    <pre id="format-raw"><code>{{ jsonRaw }}</code></pre>
+    <pre id="format-raw"><code class="language-json">{{ jsonRaw }}</code></pre>
 </section>

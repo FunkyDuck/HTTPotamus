@@ -1,12 +1,15 @@
 <form id="url-search">
-    <select>
-        <option>GET</option>
-        <option>POST</option>
-        <option>PUT</option>
-        <option>DELETE</option>
-    </select>
+    <div class="select-wrapper">
+        <select [(ngModel)]="method" name="method">
+            <option *ngFor="let m of methods" [value]="m">{{ m }}</option>
+        </select>
+    </div>
     <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale">
     <button type="button" (click)="sendRequest()">Slurp !</button>
 </form>
 
-<section></section>
+<form>
+    <input type="range" min="0" max="1" name="sliderValue" [(ngModel)]="sliderValue" [ngClass]="sliderValue == 1 ? 'range-blue' : 'range-grey'" class="styled-range">
+    <input type="text" id="key" name="key" placeholder="key">
+    <input type="text" id="value" name="value" placeholder="value"> 
+</form>
