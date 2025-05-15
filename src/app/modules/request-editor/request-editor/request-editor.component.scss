@@ -31,7 +31,7 @@ form:first-child {
             width: 10dvw;
             border: 1px solid colors.$green-main;
             border-right: none;
-            border-radius: 8px 0 0 8px;
+            border-radius: 8px;
             padding: 0 2dvw 0 0.5dvw;
             height: 3.5dvh;
             font-size: 1rem;
@@ -78,46 +78,88 @@ form:first-child {
 
 form:last-child {
     width: 70dvw;
-    height: 20dvh;
+    height: 30dvh;
     margin: auto;
+    padding: 0;
+    margin-left: -13dvw;
     line-height: 3.5dvh;
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-content: flex-start;
+    overflow-y: scroll;
+    
+    fieldset {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    
+    input, button {
+        box-sizing: border-box;
+    }
 
     input {
+        appearance: none;
+        border: none;
+        border-right: 1px solid colors.$grey-main;
         width: 15dvw;
         height: 3.5dvh;
+        
+        &[type=text] {
+            padding: 0.1dvh 0.25dvw;
+
+            &:last-child {
+                border: none;
+                width: 25dvw;
+            }
+        }
+    }
+    
+    button {
+        height: 3.5dvh;
+        margin: 0;
+        border: none;
+        border-radius: 0 8px 8px 0;
+        background:  colors.$grey-secondary;
+        transition: background 0.2s ease;
+        
+        &:hover {
+            background: darken(colors.$grey-main, 20%);
+        }
     }
 
     /* Base styling for range input */
     .styled-range {
     appearance: none;
-    width: 5dvw;
-    height: 3.5dvh;
+    width: 2dvw;
+    height: 3dvh;
+    margin: 0.25dvh 0.5dvw;
     background: colors.$dark-main;
     cursor: pointer;
-    border-radius: 1.25dvh;
+    border-radius: 8px;
     border: 1px solid colors.$grey-secondary;
 
     /* Track - Chrome */
     &::-webkit-slider-runnable-track {
         height: 3dvh;
-        border-radius: 1.25dvh;
+        border-radius: 8px;
     }
 
     /* Track - Firefox */
     &::-moz-range-track {
         height: 3dvh;
-        border-radius: 1.25dvh;
+        border-radius: 8px;
     }
 
     /* Thumb - Chrome */
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        width: 3dvw;
-        height: 3.5dvh;
-        border-radius: 1.25dvh;
+        width: 1.25dvw;
+        height: 3dvh;
+        border-radius: 8px;
         // border: 16px solid colors.$grey-secondary;
         background-color: currentColor;
         margin-top: -1.25dvh; /* Center the thumb */
@@ -125,9 +167,9 @@ form:last-child {
     
     /* Thumb - Firefox */
     &::-moz-range-thumb {
-        width: 3dvw;
-        height: 3.5dvh;
-        border-radius: 1.25dvh;
+        width: 1.25dvw;
+        height: 3dvh;
+        border-radius: 8px;
         // border: 16px solid colors.$grey-secondary;
         background-color: currentColor;
         border: none;
@@ -143,6 +185,7 @@ form:last-child {
 
 .range-grey {
     color: colors.$grey-secondary;
+    border-radius: 8px !important;
     }
 
 }

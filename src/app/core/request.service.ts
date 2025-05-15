@@ -33,7 +33,6 @@ export class RequestService {
       catchError((err: HttpErrorResponse) => {
         const end = performance.now();
         const duration = Math.round(end - start);
-        console.error(`STATUS ERR :: ${err.status}`)
         
         return of({
           status: err.status,

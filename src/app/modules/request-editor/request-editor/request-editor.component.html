@@ -4,12 +4,17 @@
             <option *ngFor="let m of methods" [value]="m">{{ m }}</option>
         </select>
     </div>
-    <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale">
+    <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale" (keyup)="sendRequest($event)">
     <button type="button" (click)="sendRequest()">Slurp !</button>
 </form>
 
 <form>
-    <input type="range" min="0" max="1" name="sliderValue" [(ngModel)]="sliderValue" [ngClass]="sliderValue == 1 ? 'range-blue' : 'range-grey'" class="styled-range">
-    <input type="text" id="key" name="key" placeholder="key">
-    <input type="text" id="value" name="value" placeholder="value"> 
+    @for(row of arrayForm; track row; let idx = $index, last = $last) {
+        <fieldset id="field-{{idx}}">
+            <input type="range" min="0" max="1" id="slider-{{ idx }}" name="slider-{{ idx }}" [value]="row.slider" [ngClass]="row.slider == 1 ? 'range-blue' : 'range-grey'" class="styled-range" (click)="updateSlider(idx)">
+            <input type="text" id="key-{{ idx }}" name="key-{{ idx }}" placeholder="key" [value]="row.key" (blur)="addRow($event, idx, last)">
+            <input type="text" id="value-{{ idx }}" name="value-{{ idx }}" placeholder="value" [value]="row.value" (blur)="addRow($event, idx, last)"> 
+            <button type="button" (click)="deleteRow(idx)">❌</button>
+        </fieldset>
+    }
 </form>

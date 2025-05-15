@@ -31,7 +31,7 @@ export class ResponseViewerComponent implements OnInit, OnChanges {
           this.statusText = data.statusText;
 
           if(data.error) {
-            console.warn(`ERrrr :://:: ${data.status}`)
+            console.warn(data.status)
           }
 
           this.updateData();
@@ -91,7 +91,6 @@ export class ResponseViewerComponent implements OnInit, OnChanges {
   }
 
   getClass(): string {
-    console.info(`GET/CLASS [${this.status}]`)
     if(this.status >= 100 && this.status < 200) return 'blue';
     if(this.status >= 200 && this.status < 300) return 'green';
     if(this.status >= 300 && this.status < 400) return 'yellow';
