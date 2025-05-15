@@ -55,7 +55,8 @@ section {
             article {
                 box-sizing: border-box;
                 height: 3.5dvh;
-                width: 15dvw;
+                min-width: 15dvw;
+                max-width: 25dvw;
                 padding: 0.5dvh 1dvw;
                 font-size: 1rem;
                 border: 1px solid colors.$green-main;
