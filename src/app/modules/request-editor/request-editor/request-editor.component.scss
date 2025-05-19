@@ -31,13 +31,31 @@ form:first-child {
             width: 10dvw;
             border: 1px solid colors.$green-main;
             border-right: none;
-            border-radius: 8px;
+            border-radius: 8px 0 0 8px;
             padding: 0 2dvw 0 0.5dvw;
             height: 3.5dvh;
             font-size: 1rem;
             background: colors.$grey-secondary;
             color: colors.$dark-secondary;
             font-weight: 500;
+
+            option {
+                .get {
+                    color: colors.$green-secondary;
+                }
+
+                .post {
+                    color: colors.$blue;
+                }
+
+                .put {
+                    color: colors.$orange;
+                }
+
+                .delete {
+                    color: colors.$red;
+                }
+            }
         }
 
         &::after {

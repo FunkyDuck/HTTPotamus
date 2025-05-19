@@ -1,7 +1,7 @@
 <form id="url-search">
     <div class="select-wrapper">
         <select [(ngModel)]="method" name="method">
-            <option *ngFor="let m of methods" [value]="m">{{ m }}</option>
+            <option *ngFor="let m of methods" [value]="m" [class]="m.toLowerCase()">{{ m }}</option>
         </select>
     </div>
     <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale" (keyup)="sendRequest($event)">

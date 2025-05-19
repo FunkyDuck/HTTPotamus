@@ -9,6 +9,9 @@ import { catchError, map } from 'rxjs/operators';
 export class RequestService {
   private responseSubject = new BehaviorSubject<any>(null);
   response$ = this.responseSubject.asObservable();
+
+  private requestSubject = new BehaviorSubject<any>(null);
+  request$ = this.requestSubject.asObservable();
   
   constructor(private _http: HttpClient) { }
 
@@ -47,5 +50,9 @@ export class RequestService {
 
   updateResponse(data: any): void {
     this.responseSubject.next(data);
+  }
+
+  setRequest(req: any): void {
+    this.requestSubject.next(req);
   }
 }

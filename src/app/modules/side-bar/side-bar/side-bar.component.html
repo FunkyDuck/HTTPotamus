@@ -1,0 +1,20 @@
+<nav>
+    <ul>
+        <li id="nav-history" (click)="updatePage('history')">🕘</li> <!-- History -->
+        <li id="nav-saved" (click)="updatePage('saved')">💾</li> <!-- Saved requests -->
+        <li id="nav-settings" (click)="updatePage('settings')" class="active">⚙️</li> <!-- Settings -->
+    </ul>
+    <h2>{{(view !== 'settings')? 'Request ' : ''}}{{view}}</h2>
+</nav>
+
+@if (view === 'history') {
+    <app-request-history  />
+}
+
+@if (view === 'saved') {
+    <app-request-saved  />
+}
+
+@if (view === 'settings') {
+    <app-settings  />
+}

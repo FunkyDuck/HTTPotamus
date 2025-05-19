@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RequestService } from '../../../core/request.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { StorageService } from '../../../core/storage.service';
+import { HistoryRequest } from '../../../core/storage';
 
 @Component({
   selector: 'app-request-editor',
@@ -10,14 +12,28 @@ import { CommonModule } from '@angular/common';
   templateUrl: './request-editor.component.html',
   styleUrl: './request-editor.component.scss'
 })
-export class RequestEditorComponent {
+export class RequestEditorComponent implements OnInit {
   @Input() url: any;
   @Input() method: any;
   methods = ['GET', 'POST', 'PUT', 'DELETE'];
   arrayForm = [{slider: 1, key: '', value: ''}];
 
-  constructor(private _req: RequestService) {
+  constructor(private _req: RequestService, private _storage: StorageService) {
     this.method = this.methods[0];
+  }
+
+  ngOnInit(): void {
+    this.getRequest();
+  }
+
+  getRequest() {
+    this._req.request$.subscribe((r: any) => {
+      console.info("BIG R")
+      console.log(r)
+      this.method = r.method;
+      this.url = r.url;
+      this.arrayForm = [r.headers];
+    });
   }
 
   sendRequest(event: any = null) {
@@ -26,7 +42,15 @@ export class RequestEditorComponent {
         acc[row.key] = row.value;
         return acc;
       }, {} as Record<string, string>);
-      console.log(data)
+
+      const historyItem: HistoryRequest = {
+        method: this.method,
+        url: this.url,
+        headers: data,
+        createdAt: Date.now()
+      }
+
+      this._storage.addHistory(historyItem);
 
       this._req.sendRequest(this.url, this.method, data).subscribe(res => {
         this._req.updateResponse(res);
@@ -35,8 +59,6 @@ export class RequestEditorComponent {
   }
 
   addRow(event: any, idx: number, last: any): void {
-    console.info(`Idx : ${idx} || ${last} : Last`)
-    console.log(`[${event.target.id}] ${event.target.value}`)
     const selkey = (document.getElementById(`key-${idx}`)as any).value;
     const selvalue = (document.getElementById(`value-${idx}`)as any).value;
     this.arrayForm[idx].key = selkey;

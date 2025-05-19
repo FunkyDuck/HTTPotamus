@@ -1,0 +1,68 @@
+@use 'colors';
+
+nav {
+    width: 20dvw;
+    margin: 1dvh auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        width: 18dvw;
+        height: 5dvh;
+        border-radius: 8px 8px 0 0;
+        border: 1px solid colors.$light-main;
+        margin: auto;
+        padding: 0;
+    
+        li {
+            text-align: center;
+            height: 5dvh;
+            width: calc(18dvw/3);
+            line-height: 5dvh;
+            font-size: 1.5rem;
+            cursor: pointer;
+    
+            &:first-child {
+                border-radius: 8px 0 0 0;
+            }
+    
+            &:last-child {
+                border-radius: 0 8px 0 0;
+                // width: 34%;
+            }
+    
+            &:not(:last-child) {
+                border-right: 1px solid colors.$light-main;
+            }
+    
+            &:hover {
+                background: colors.$grey-main;
+                color: colors.$dark-main;
+            }
+            
+            &.active {
+                background: colors.$light-main;
+                color: colors.$dark-main;
+            }
+        }
+
+    }
+
+    h2 {
+        border: 1px solid colors.$light-main;
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        height: 5dvh;
+        width: 18dvw;
+        padding: 0;
+        margin: auto;
+        line-height: 5dvh;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: 'Audiowide';
+    }
+}

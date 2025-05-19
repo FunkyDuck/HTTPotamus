@@ -5,11 +5,12 @@ import { HeaderComponent } from './modules/header/header/header.component';
 import { RequestHistoryComponent } from "./modules/request-history/request-history/request-history.component";
 import { ResponseViewerComponent } from './modules/response-viewer/response-viewer/response-viewer.component';
 import { FormsModule } from '@angular/forms';
+import { SideBarComponent } from "./modules/side-bar/side-bar/side-bar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, RequestEditorComponent, RequestHistoryComponent, ResponseViewerComponent, FormsModule],
+  imports: [RouterOutlet, HeaderComponent, RequestEditorComponent, RequestHistoryComponent, ResponseViewerComponent, FormsModule, SideBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

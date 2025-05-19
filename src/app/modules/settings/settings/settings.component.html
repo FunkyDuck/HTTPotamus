@@ -1,0 +1,35 @@
+<ul>
+    <li id="set-datas" class="selected">
+        <h2 (click)="displaySettings('datas')">💾 Datas</h2> <!-- Save/Export in json format -->
+        <form id="form-datas" class="hidden">
+        <!-- <form id="form-datas"> -->
+            <input type="file" accept="text/json">
+            <button type="button">Upload</button>
+            <i>- or -</i>
+            <button type="button">Download</button>
+        </form>
+    </li>
+
+    <li id="set-history">
+        <h2 (click)="displaySettings('history')">🕓 History</h2> <!-- Delete datas -->
+
+        <form id="form-history" class="hidden">
+            <input type="number" name="history-entries" id="history-entries" min="0" max="100" placeholder="History max saved: ex: 30" defaultValue="25" />
+            <button type="button" (click)="changeMaxHistory()">Modify</button>
+            <i>-- or --</i>
+            <button type="button" class="warn" (click)="deleteCurrentHistory()">Delete current history</button>
+        </form>
+    </li>
+    
+    <li id="set-theme">
+        <h2 (click)="displaySettings('theme')">🎨 Theme</h2> <!-- Dark/Light or colorblind (daltonien) -->
+    </li>
+    
+    <li id="set-font">
+        <h2 (click)="displaySettings('font')">🔤 Font</h2> <!-- Load classic or dys font -->
+    </li>
+    
+    <li id="set-langage">
+        <h2 (click)="displaySettings('langage')">🌐 Langage</h2>
+    </li>
+</ul>
