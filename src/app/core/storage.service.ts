@@ -43,6 +43,19 @@ export class StorageService {
   private _saved$ = new BehaviorSubject<SavedRequest[]>([]);
   public saved$ = this._saved$.asObservable();
 
+  async requestPersistentStorage() {
+    if(navigator.storage && await navigator.storage.persist()) {
+      const isPersisted = await navigator.storage.persisted();
+
+      if(!isPersisted) {
+        const granted = await navigator.storage.persist();
+      }
+    }
+    else {
+      console.warn('[Storage] Persistence API not supported.')
+    }
+  }
+
   async downloadDb(): Promise<any> {
     const db = await this.dbPromise;
 
