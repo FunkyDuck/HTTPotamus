@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-json';
 import { RequestService } from '../../../core/request.service';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './response-viewer.component.html',
   styleUrl: './response-viewer.component.scss'
 })
-export class ResponseViewerComponent implements OnInit, OnChanges {
+export class ResponseViewerComponent implements OnInit {
   @Input() jsonData: any;
   highlitedJson: string = "";
   jsonRaw: string = '';
@@ -38,14 +38,6 @@ export class ResponseViewerComponent implements OnInit, OnChanges {
         }
       },
     });
-    // setTimeout(()=>{
-    //   this.ngOnChanges();
-    // },1);
-  }
-
-  ngOnChanges(): void {
-    
-    // console.log(this._req.response$)
   }
 
   updateData(): void {

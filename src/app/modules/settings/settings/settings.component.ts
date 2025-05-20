@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../../core/storage.service';
+import { RequestService } from '../../../core/request.service';
 import { version } from '../../../../../package.json';
 
 @Component({
@@ -12,7 +13,7 @@ import { version } from '../../../../../package.json';
 export class SettingsComponent implements OnInit {
   protected version: string;
 
-  constructor(private _storage: StorageService) {
+  constructor(private _storage: StorageService, private _request: RequestService) {
     this.version = version;
   }
 
@@ -21,14 +22,31 @@ export class SettingsComponent implements OnInit {
     historyMaxEntries.value = localStorage.getItem('history');
   }
 
+  sendToViewer(data: any): void {
+    const json = {
+      body: data
+    };
+    this._request.updateResponse(json);
+  }
+
   changeMaxHistory(): void {
     const maxEntries = (document.getElementById('history-entries')as any).value;
     localStorage.setItem('history', maxEntries);
     this._storage.cleanupHistory(<number>maxEntries);
+    const json = {
+      action: 'Change Max history',
+      success: true
+    };
+    this.sendToViewer(json);
   }
 
   deleteCurrentHistory(): void {
     this._storage.clearHistory();
+    const json = {
+      action: 'Clear History',
+      success: true
+    };
+    this.sendToViewer(json);
   }
 
   async downloadDb(): Promise<any> {
@@ -48,6 +66,12 @@ export class SettingsComponent implements OnInit {
     a.download = `httpotamus-backup_${now}.json`;
     a.click();
     URL.revokeObjectURL(url);
+
+    const json = {
+      action: 'Download Database',
+      success: true
+    };
+    this.sendToViewer(json);
   }
 
   uploadDb(): void {
@@ -55,6 +79,12 @@ export class SettingsComponent implements OnInit {
     
     if(!jsonFile || !jsonFile.files || jsonFile.files.length === 0) {
       console.warn('No file selected...');
+      const json = {
+        action: 'Upload database',
+        success: false,
+        error: 'No file selected'
+      }
+      this.sendToViewer(json);
       return;
     }
 
@@ -69,16 +99,32 @@ export class SettingsComponent implements OnInit {
         const data = event.target?.result as string;
         const parsedData = JSON.parse(data);
 
-        // console.log(parsedData)
-        // console.log(parsedData.data)
         this._storage.uploadDb(parsedData.data);
+
+        const json = {
+          action: 'Upload database',
+          success: true
+        }
+        this.sendToViewer(json);
       } catch (err) {
         console.error(err);
+        const json = {
+          action: 'Upload database',
+          success: false,
+          error: err
+        }
+        this.sendToViewer(json);
       }
     };
-
+    
     reader.onerror = (err) => {
       console.error(err);
+      const json = {
+        action: 'Upload database',
+        success: false,
+        error: err
+      }
+      this.sendToViewer(json);
     };
 
     reader.readAsText(file);

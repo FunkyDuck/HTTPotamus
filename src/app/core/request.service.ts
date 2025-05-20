@@ -49,6 +49,7 @@ export class RequestService {
   }
 
   updateResponse(data: any): void {
+    console.info(`Update : `, data)
     this.responseSubject.next(data);
   }
 
