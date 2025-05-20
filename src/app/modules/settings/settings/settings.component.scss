@@ -59,6 +59,21 @@ ul {
                 }
             }
         }
+
+        p {
+            margin: 0.25dvh 0;
+
+            b {
+                font-family: Audiowide;
+                font-weight: 800;
+            }
+
+            a {
+                font-weight: 600;
+                text-decoration: none;
+                color: colors.$purple;
+            }
+        }
     }
 }
 

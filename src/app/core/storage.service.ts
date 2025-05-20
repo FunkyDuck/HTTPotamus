@@ -38,6 +38,26 @@ export class StorageService {
 
   private _history$ = new BehaviorSubject<HistoryRequest[]>([]);
   public history$ = this._history$.asObservable();
+  private _collection$ = new BehaviorSubject<RequestCollection[]>([]);
+  public collection$ = this._collection$.asObservable();
+  private _saved$ = new BehaviorSubject<SavedRequest[]>([]);
+  public saved$ = this._saved$.asObservable();
+
+  async downloadDb(): Promise<any> {
+    const db = await this.dbPromise;
+
+    const exportData = {
+      history: await db.getAll('history'),
+      saved: await db.getAll('saved'),
+      collection: await db.getAll('collection')
+    };
+
+    return exportData;
+  }
+
+  async uploadDb() {
+    // TODO
+  }
 
   async addHistory(req: HistoryRequest) {
     const db = await this.dbPromise;

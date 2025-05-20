@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../../core/storage.service';
+import { version } from '../../../../../package.json';
 
 @Component({
   selector: 'app-settings',
@@ -9,7 +10,11 @@ import { StorageService } from '../../../core/storage.service';
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent implements OnInit {
-  constructor(private _storage: StorageService) {}
+  protected version: string;
+
+  constructor(private _storage: StorageService) {
+    this.version = version;
+  }
 
   ngOnInit(): void {
     const historyMaxEntries = document.getElementById('history-entries')as any;
@@ -25,6 +30,27 @@ export class SettingsComponent implements OnInit {
   deleteCurrentHistory(): void {
     this._storage.clearHistory();
   }
+
+  async downloadDb(): Promise<any> {
+    const now = new Date().toISOString()
+    const data: any = await this._storage.downloadDb();
+    const exportData: any = {
+      app: "HTTPotamus",
+      version: this.version,
+      exportedAt: now,
+      data: data
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `httpotamus-backup_${now}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  uploadDb(): void {}
 
   displaySettings(params: string): void {
     const fDatas = document.getElementById('form-datas')?.classList;

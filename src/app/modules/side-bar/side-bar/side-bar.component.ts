@@ -11,7 +11,7 @@ import { SettingsComponent } from "../../settings/settings/settings.component";
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent implements OnInit {
-  public navigate: string[] = ['history', 'saved', 'settings']
+  public navigate: string[] = ['history', 'collection', 'settings']
   protected view: string;
 
   constructor() {
@@ -26,9 +26,13 @@ export class SideBarComponent implements OnInit {
     this.view = page;
 
     document.getElementById('nav-history')?.classList.remove('active');
-    document.getElementById('nav-saved')?.classList.remove('active');
+    document.getElementById('nav-collection')?.classList.remove('active');
     document.getElementById('nav-settings')?.classList.remove('active');
 
     document.getElementById(`nav-${page}`)?.classList.add('active');
+  }
+
+  upperFirstChar(str: string) {
+    return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
   }
 }
