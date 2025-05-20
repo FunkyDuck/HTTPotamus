@@ -55,8 +55,25 @@ export class StorageService {
     return exportData;
   }
 
-  async uploadDb() {
-    // TODO
+  async uploadDb(jsonData: any) {
+    const db = await this.dbPromise;
+    const tx = db.transaction(['history','saved','collection'], 'readwrite');
+
+    console.info('On UploadDb')
+    console.log(jsonData)
+
+    try {
+      await Promise.all([
+        ...jsonData.history.map((item: HistoryRequest) => tx.objectStore('history').put(item)),
+        ...jsonData.collection.map((item: RequestCollection) => tx.objectStore('collection').put(item)),
+        ...jsonData.saved.map((item: SavedRequest) => tx.objectStore('saved').put(item))
+      ]);
+  
+      await tx.done;
+      this.getHistory();
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   async addHistory(req: HistoryRequest) {
@@ -67,6 +84,7 @@ export class StorageService {
   }
 
   async getHistory() {
+    console.log('ON GET HISTORY')
     const db = await this.dbPromise;
     const res = await db.getAllFromIndex('history', 'by-createdAt');
     this._history$.next(res);

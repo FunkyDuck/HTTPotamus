@@ -3,8 +3,8 @@
     <li id="set-datas" class="selected">
         <h2 (click)="displaySettings('datas')">💾 Datas</h2> 
         <form id="form-datas" class="hidden">
-            <input type="file" accept="text/json">
-            <button type="button">Upload</button>
+            <input type="file" name="json-data-upload" id="json-data-upload" accept="text/json">
+            <button type="button" (click)="uploadDb()" >Upload</button>
             <i>- or -</i>
             <button type="button" (click)="downloadDb()">Download</button>
         </form>

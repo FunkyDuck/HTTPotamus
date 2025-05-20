@@ -50,7 +50,39 @@ export class SettingsComponent implements OnInit {
     URL.revokeObjectURL(url);
   }
 
-  uploadDb(): void {}
+  uploadDb(): void {
+    const jsonFile = <HTMLInputElement>document.getElementById('json-data-upload');
+    
+    if(!jsonFile || !jsonFile.files || jsonFile.files.length === 0) {
+      console.warn('No file selected...');
+      return;
+    }
+
+    const file = jsonFile.files[0];
+    const reader = new FileReader();
+
+    console.info('READER 1')
+
+    reader.onload = (event: ProgressEvent<FileReader>) => {
+      console.log('ON READER')
+      try {
+        const data = event.target?.result as string;
+        const parsedData = JSON.parse(data);
+
+        // console.log(parsedData)
+        // console.log(parsedData.data)
+        this._storage.uploadDb(parsedData.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    reader.onerror = (err) => {
+      console.error(err);
+    };
+
+    reader.readAsText(file);
+  }
 
   displaySettings(params: string): void {
     const fDatas = document.getElementById('form-datas')?.classList;
