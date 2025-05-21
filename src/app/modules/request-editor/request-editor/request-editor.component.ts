@@ -28,8 +28,6 @@ export class RequestEditorComponent implements OnInit {
 
   getRequest() {
     this._req.request$.subscribe((r: any) => {
-      console.info("BIG R")
-      console.log(r)
       this.method = r.method;
       this.url = r.url;
       this.arrayForm = Object.entries(r.headers || {}).map(([key, value]) => ({
@@ -37,6 +35,9 @@ export class RequestEditorComponent implements OnInit {
         key,
         value: String(value)
       }));
+
+      this.arrayForm.push({slider: 1, key: '', value: ''});
+      console.log(`Form length : ${this.arrayForm.length}`)
     });
   }
 
