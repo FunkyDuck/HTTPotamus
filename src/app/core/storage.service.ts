@@ -93,7 +93,8 @@ export class StorageService {
     const db = await this.dbPromise;
     await db.add('history', req);
     this.getHistory();
-    this.cleanupHistory(<number>(localStorage.getItem('history') as any));
+    const max = Number(localStorage.getItem('history'));
+    this.cleanupHistory(!isNaN(max) && max > 0 ? max : 25);
   }
 
   async getHistory() {
