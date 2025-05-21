@@ -32,7 +32,11 @@ export class RequestEditorComponent implements OnInit {
       console.log(r)
       this.method = r.method;
       this.url = r.url;
-      this.arrayForm = [r.headers];
+      this.arrayForm = Object.entries(r.headers || {}).map(([key, value]) => ({
+        slider: 1,
+        key,
+        value: String(value)
+      }));
     });
   }
 
