@@ -1,15 +1,59 @@
 @use 'colors';
 
+section {
+    width: 70dvw;
+    height: 5dvh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        box-sizing: border-box;
+        height: 3.5dvh;
+        border: none;
+        border-radius: 8px;
+        padding: 0 1dvw;
+        background: colors.$grey-secondary;
+        color: colors.$dark-secondary;
+        transition: background 0.2s ease;
+        
+        &:hover {
+            background: darken(colors.$grey-main, 20%);
+        }
+
+        &.active {
+            background: colors.$grey-main;
+        }
+    }
+
+    div {
+        button {
+            border-radius: 0;
+            border-right: 1px solid colors.$grey-main;
+
+            &:first-child {
+                border-radius: 8px 0 0 8px;
+            }
+
+            &:last-child {
+                border-radius: 0 8px 8px 0;
+            }
+        }
+    }
+}
+
 form:first-child {
     width: 70dvw;
-    height: 10dvh;
+    height: 5dvh;
     margin: auto;
     display: flex;
     flex-direction: row;
     // justify-content: space-between;
-    line-height: 10dvh;
+    line-height: 5dvh;
     align-items: center;
-
+    
     select, input, button {
         box-sizing: border-box;
         height: 3.5dvh;
@@ -19,11 +63,11 @@ form:first-child {
         color: colors.$dark-secondary;
         font-weight: 500;
     }
-
+    
     .select-wrapper {
         position: relative;
         display: inline-block;
-
+        
         select {
             appearance: none;
             -webkit-appearance: none;
@@ -38,26 +82,26 @@ form:first-child {
             background: colors.$grey-secondary;
             color: colors.$dark-secondary;
             font-weight: 500;
-
+            
             option {
                 .get {
                     color: colors.$green-secondary;
                 }
-
+                
                 .post {
                     color: colors.$blue;
                 }
-
+                
                 .put {
                     color: colors.$orange;
                 }
-
+                
                 .delete {
                     color: colors.$red;
                 }
             }
         }
-
+        
         &::after {
             content: "▼";
             position: absolute;
@@ -69,8 +113,8 @@ form:first-child {
             color: colors.$dark-secondary;
         }
     }
-
-
+    
+    
     input {
         width: 40dvw;
         flex: 1;
@@ -78,7 +122,7 @@ form:first-child {
         border-left: none;
         padding: 0 0.75dvw;
     }
-
+    
     button {
         width: 10dvw;
         border-left: none;
@@ -87,14 +131,14 @@ form:first-child {
         cursor: pointer;
         background: colors.$grey-secondary;
         transition: background 0.2s ease;
-
+        
         &:hover {
             background: darken(colors.$grey-main, 20%);
         }
     }
 }
 
-form:last-child {
+form#keyval-form {
     width: 70dvw;
     height: 30dvh;
     margin: auto;
@@ -118,7 +162,7 @@ form:last-child {
     input, button {
         box-sizing: border-box;
     }
-
+    
     input {
         appearance: none;
         border: none;
@@ -128,7 +172,7 @@ form:last-child {
         
         &[type=text] {
             padding: 0.1dvh 0.25dvw;
-
+            
             &:last-child {
                 border: none;
                 width: 25dvw;
@@ -148,62 +192,84 @@ form:last-child {
             background: darken(colors.$grey-main, 20%);
         }
     }
-
+    
     /* Base styling for range input */
     .styled-range {
-    appearance: none;
-    width: 2dvw;
-    height: 3dvh;
-    margin: 0.25dvh 0.5dvw;
-    background: colors.$dark-main;
-    cursor: pointer;
-    border-radius: 8px;
-    border: 1px solid colors.$grey-secondary;
-
-    /* Track - Chrome */
-    &::-webkit-slider-runnable-track {
+        appearance: none;
+        width: 2dvw;
         height: 3dvh;
+        margin: 0.25dvh 0.5dvw;
+        background: colors.$dark-main;
+        cursor: pointer;
         border-radius: 8px;
-    }
-
-    /* Track - Firefox */
-    &::-moz-range-track {
-        height: 3dvh;
-        border-radius: 8px;
-    }
-
-    /* Thumb - Chrome */
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 1.25dvw;
-        height: 3dvh;
-        border-radius: 8px;
-        // border: 16px solid colors.$grey-secondary;
-        background-color: currentColor;
-        // margin-top: -1.25dvh; /* Center the thumb */
+        border: 1px solid colors.$grey-secondary;
+        
+        /* Track - Chrome */
+        &::-webkit-slider-runnable-track {
+            height: 3dvh;
+            border-radius: 8px;
+        }
+        
+        /* Track - Firefox */
+        &::-moz-range-track {
+            height: 3dvh;
+            border-radius: 8px;
+        }
+        
+        /* Thumb - Chrome */
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 1.25dvw;
+            height: 3dvh;
+            border-radius: 8px;
+            // border: 16px solid colors.$grey-secondary;
+            background-color: currentColor;
+            // margin-top: -1.25dvh; /* Center the thumb */
+        }
+        
+        /* Thumb - Firefox */
+        &::-moz-range-thumb {
+            width: 1.25dvw;
+            height: 3dvh;
+            border-radius: 8px;
+            // border: 16px solid colors.$grey-secondary;
+            background-color: currentColor;
+            border: none;
+            // margin-top: 1.25dvh; /* Center the thumb */
+        }
     }
     
-    /* Thumb - Firefox */
-    &::-moz-range-thumb {
-        width: 1.25dvw;
-        height: 3dvh;
-        border-radius: 8px;
-        // border: 16px solid colors.$grey-secondary;
-        background-color: currentColor;
-        border: none;
-        // margin-top: 1.25dvh; /* Center the thumb */
-    }
-    }
-
     /* Color variants */
     .range-blue {
-    color: colors.$blue;
-    border: 1px solid colors.$grey-secondary;
+        color: colors.$blue;
+        border: 1px solid colors.$grey-secondary;
+    }
+    
+    .range-grey {
+        color: colors.$grey-secondary;
+        border-radius: 8px !important;
+    }
+    
 }
 
-.range-grey {
-    color: colors.$grey-secondary;
-    border-radius: 8px !important;
-    }
+form#json-form {
+    width: 70dvw;
+    height: 30dvh;
+    margin: auto;
+    padding: 0;
+    // margin-left: -13dvw;
 
+    textarea {
+        width: 69.5dvw;
+        height: 27.5dvh;
+        padding: 1dvh 0.25dvw;
+        border: none;
+        border-radius: 8px;
+        background: colors.$grey-secondary;
+        color: colors.$dark-secondary;
+    }
+}
+
+form.hidden {
+    display: none !important;
 }

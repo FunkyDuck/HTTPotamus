@@ -8,7 +8,16 @@
     <button type="button" (click)="sendRequest()">Slurp !</button>
 </form>
 
-<form>
+<section>
+    <div>
+        <button id="keyval-btn" (click)="displayForm('keyval')" class="active">Key/Value</button>
+        <button id="json-btn" (click)="displayForm('json')">Json</button>
+    </div>
+
+    <button>🍜 Instant Ramen</button>
+</section>
+
+<form id="keyval-form">
     @for(row of arrayForm; track row; let idx = $index, last = $last) {
         <fieldset id="field-{{idx}}">
             <input type="range" min="0" max="1" id="slider-{{ idx }}" name="slider-{{ idx }}" [value]="row.slider" [ngClass]="row.slider == 1 ? 'range-blue' : 'range-grey'" class="styled-range" (click)="updateSlider(idx)">
@@ -17,4 +26,8 @@
             <button type="button" (click)="deleteRow(idx)">❌</button>
         </fieldset>
     }
+</form>
+
+<form id="json-form" class="hidden">
+    <textarea id="field-json" (keyup)="parseJson()" placeholder="{ 'key': 'value' }"></textarea>
 </form>

@@ -15,7 +15,7 @@ export class SideBarComponent implements OnInit {
   protected view: string;
 
   constructor() {
-    this.view = this.navigate[2];
+    this.view = this.navigate[0];
   }
 
   ngOnInit(): void {

@@ -17,13 +17,21 @@ export class RequestEditorComponent implements OnInit {
   @Input() method: any;
   methods = ['GET', 'POST', 'PUT', 'DELETE'];
   arrayForm = [{slider: 1, key: '', value: ''}];
+  jsonForm: string = '';
+  selectedForm: string;
 
   constructor(private _req: RequestService, private _storage: StorageService) {
     this.method = this.methods[0];
+    this.selectedForm = 'keyval';
   }
 
   ngOnInit(): void {
     this.getRequest();
+  }
+
+  parseJson(): void {
+    const input = <any>document.getElementById('field-json');
+    this.jsonForm = input.value;
   }
 
   getRequest() {
@@ -43,10 +51,18 @@ export class RequestEditorComponent implements OnInit {
 
   sendRequest(event: any = null) {
     if(event === null || event.keyCode == 13) {
-      let data = this.arrayForm.filter(row => row.slider === 1 && row.key !== '' && row.value !== '').reduce((acc, row) => {
-        acc[row.key] = row.value;
-        return acc;
-      }, {} as Record<string, string>);
+      let data;
+
+      if(this.selectedForm === 'keyval') {
+        data = this.arrayForm.filter(row => row.slider === 1 && row.key !== '' && row.value !== '').reduce((acc, row) => {
+          acc[row.key] = row.value;
+          return acc;
+        }, {} as Record<string, string>);
+      }
+
+      if(this.selectedForm === 'json') {
+        data = JSON.parse(this.jsonForm);
+      }
 
       const historyItem: HistoryRequest = {
         method: this.method,
@@ -84,5 +100,31 @@ export class RequestEditorComponent implements OnInit {
     row?.remove();
     this.arrayForm.splice(idx, 1);
     console.log(this.arrayForm)
+  }
+
+  displayForm(str: string) {
+    const keyvalBtn = document.getElementById('keyval-btn')?.classList;
+    const keyvalForm = document.getElementById('keyval-form')?.classList;
+    const jsonBtn = document.getElementById('json-btn')?.classList;
+    const jsonForm = document.getElementById('json-form')?.classList;
+
+    this.selectedForm = str;
+
+    const a: string = 'active';
+    const h: string = 'hidden';
+
+    keyvalBtn?.remove(a);
+    jsonBtn?.remove(a);
+    keyvalForm?.add(h);
+    jsonForm?.add(h);
+
+    if(str === 'keyval') {
+      keyvalBtn?.add(a);
+      keyvalForm?.remove(h);
+    }
+    if(str === 'json') {
+      jsonBtn?.add(a);
+      jsonForm?.remove(h);
+    }
   }
 }
