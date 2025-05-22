@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../../core/storage.service';
 import { RequestService } from '../../../core/request.service';
-import { version } from '../../../../../package.json';
+import { appVersion } from '../../../../version'; 
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +14,7 @@ export class SettingsComponent implements OnInit {
   protected version: string;
 
   constructor(private _storage: StorageService, private _request: RequestService) {
-    this.version = version;
+    this.version = appVersion;
   }
 
   ngOnInit(): void {

@@ -1,13 +1,37 @@
 {
   "name": "htt-potamus",
-  "version": "0.3.3",
+  "version": "0.3.4",
+  "main": "dist/main.js",
+  "build": {
+    "appId": "be.funkyduck.httpotamus",
+    "productName": "HTTPotamus",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "ts-node scripts/write-version.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "electron": "ng build --base-href ./ && tsc -p tsconfig.electron.json && electron electron-dist/main.js"
+    "electron": "ng build --base-href ./ && tsc -p tsconfig.electron.json && tsc src/main.ts --outDir dist && electron electron-dist/main.js",
+    "compile": "rimraf release && electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -34,12 +58,15 @@
     "@types/node": "^22.15.19",
     "@types/prismjs": "^1.26.5",
     "electron": "^36.2.1",
+    "electron-builder": "^26.0.12",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "~5.5.2"
   }
 }
