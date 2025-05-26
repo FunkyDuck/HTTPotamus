@@ -1,4 +1,6 @@
+// @ts-ignore
 const { writeFileSync } = require('fs');
+// @ts-ignore
 const { version } = require('../package.json');
 
 writeFileSync(
