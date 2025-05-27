@@ -60,8 +60,14 @@ export class RequestEditorComponent implements OnInit {
       }));
 
       this.arrayForm.push({slider: 1, key: '', value: ''});
-      console.log(`Form length : ${this.arrayForm.length}`)
     });
+  }
+
+  formToRecord() {
+    return this.arrayForm.filter(row => row.slider === 1 && row.key !== '' && row.value !== '').reduce((acc, row) => {
+        acc[row.key] = row.value;
+        return acc;
+      }, {} as Record<string, string>);
   }
 
   sendRequest(event: any = null) {
@@ -69,10 +75,7 @@ export class RequestEditorComponent implements OnInit {
       let data;
 
       if(this.selectedForm === 'keyval') {
-        data = this.arrayForm.filter(row => row.slider === 1 && row.key !== '' && row.value !== '').reduce((acc, row) => {
-          acc[row.key] = row.value;
-          return acc;
-        }, {} as Record<string, string>);
+        data = this.formToRecord();
       }
 
       if(this.selectedForm === 'json') {
@@ -120,10 +123,10 @@ export class RequestEditorComponent implements OnInit {
   }
 
   deleteRow(idx: number) {
-    const row = document.getElementById(`field-${idx}`);
-    row?.remove();
+    // const row = document.getElementById(`field-${idx}`);
+    // row?.remove();
     this.arrayForm.splice(idx, 1);
-    console.log(this.arrayForm)
+    // console.log(this.arrayForm)
   }
 
   displayForm(str: string) {
@@ -145,10 +148,16 @@ export class RequestEditorComponent implements OnInit {
     if(str === 'keyval') {
       keyvalBtn?.add(a);
       keyvalForm?.remove(h);
+      this.arrayForm = Object.entries(JSON.parse(this.jsonForm)).map(([key, val]) => ({
+        key,
+        value: typeof val === 'string' ? val : JSON.stringify(val),
+        slider: 1
+      }));
     }
     if(str === 'json') {
       jsonBtn?.add(a);
       jsonForm?.remove(h);
+      this.jsonForm = JSON.stringify(this.formToRecord());
     }
   }
 }
