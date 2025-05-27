@@ -1,27 +1,99 @@
-# HTTPotamus
+# 🦛 HTTPotamus
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+**HTTP requests, served hot.**
+HTTPotamus est un client HTTP léger, rapide et accessible, pour tester, sauvegarder et rejouer des requêtes — dans le navigateur ou en version desktop.
 
-## Development server
+Développé avec Angular & Tauri, il mise sur la simplicité, sans sacrifier la puissance.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 📚 Sommaire
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [Fonctionnalités](#-fonctionnalités)
+* [Développement](#-développement)
+* [Build](#-build)
+* [Stack technique](#-stack-technique)
+* [Roadmap](#-roadmap)
+* [Licence](#-licence)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🚀 Fonctionnalités
 
-## Running unit tests
+* 🔥 Envoi de requêtes HTTP (GET, POST, PUT, DELETE, etc.)
+* 🗾 Affichage structuré des réponses (code, en-têtes, JSON…)
+* 📂 Sauvegarde locale via **IndexedDB (OpenDB)**
+* 🔓 Historique consultable et requêtes favorites
+* 📄 Export / import de collections
+* 🌃 **Mode sombre, parce que les devs méritent un peu de confort**
+* 💽 Fonctionne en **web app** et **app desktop légère (Tauri)**
+* 🧘 Ultra léger, sans pub, sans tracking, juste toi et tes requêtes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🛠️ Développement
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Lancer en local
 
-## Further help
+```bash
+git clone https://github.com/FunkyDuck/HTTPotamus.git
+cd HTTPotamus
+npm install
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Puis ouvre [http://localhost:4200](http://localhost:4200) dans ton navigateur.
+
+### Version desktop (Tauri)
+
+> Nécessite Node.js, Rust, et le CLI Tauri (`cargo install create-tauri-app`)
+
+```bash
+npm run tauri dev
+```
+
+---
+
+## 📆 Build
+
+### Web
+
+```bash
+npm run build
+```
+
+Le build se trouve dans `dist/`.
+
+### Desktop
+
+```bash
+npm run tauri build
+```
+
+Tu obtiendras un exécutable natif (Windows, macOS, Linux selon la plateforme).
+
+---
+
+## 🧠 Stack technique
+
+* **Angular 18.1.3**
+* **Tauri** pour la version desktop
+* **IndexedDB** via OpenDB
+* **TypeScript**
+
+---
+
+## 📌 Roadmap
+
+* [x] App desktop (Tauri)
+* [x] Historique et favoris
+* [x] Export / import de données
+* [ ] Organisation des requêtes
+* [ ] UI/UX polishing
+* [ ] Système de plugins (en réflexion)
+
+---
+
+## 📄 Licence
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) MIT — ![Angular](https://img.shields.io/badge/Angular-18.1.3-DD0031?logo=angular&logoColor=white) — [@FunkyDuck](https://github.com/FunkyDuck)

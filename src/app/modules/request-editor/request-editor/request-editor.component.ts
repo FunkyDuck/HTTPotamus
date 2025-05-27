@@ -76,11 +76,16 @@ export class RequestEditorComponent implements OnInit {
       }
 
       if(this.selectedForm === 'json') {
-        // data = JSON.parse(JSON.stringify(this.jsonForm)) as Record<string, string>;
-        data = Object.entries(this.jsonForm).reduce((acc: any, [key, val]) => {
-          acc[key] = typeof(val) === 'string' ? val : JSON.stringify(val);
-          return acc;
-        }, {} as Record<string, string>);
+        try {
+          data = JSON.parse(this.jsonForm)
+        } catch (err) {
+          const json = {
+            body: {
+              error: err
+            }
+          };
+          this._req.updateResponse(json);
+        }
       }
 
       const historyItem: HistoryRequest = {
