@@ -19,6 +19,16 @@ export class RequestEditorComponent implements OnInit {
   arrayForm = [{slider: 1, key: '', value: ''}];
   jsonForm: string = '';
   selectedForm: string;
+  instantRamens: string[] = [
+    'https://api.sampleapis.com/coffee/hot',
+    'https://api.sampleapis.com/coffee/iced',
+    'https://api.sampleapis.com/beers/ale',
+    'https://api.sampleapis.com/beers/stouts',
+    'https://api.sampleapis.com/beers/red-ale',
+    'https://www.freetogame.com/api/games',
+    'https://pokeapi.co/api/v2/pokemon/',
+    'https://www.eightballapi.com/api'
+  ];
 
   constructor(private _req: RequestService, private _storage: StorageService) {
     this.method = this.methods[0];
@@ -32,6 +42,11 @@ export class RequestEditorComponent implements OnInit {
   parseJson(): void {
     const input = <any>document.getElementById('field-json');
     this.jsonForm = input.value;
+  }
+
+  getInstant() {
+    const url: string = this.instantRamens[Math.floor(Math.random() * this.instantRamens.length)];
+    this._req.setRequest({url: url, method: 'GET'});
   }
 
   getRequest() {
@@ -61,7 +76,11 @@ export class RequestEditorComponent implements OnInit {
       }
 
       if(this.selectedForm === 'json') {
-        data = JSON.parse(this.jsonForm);
+        // data = JSON.parse(JSON.stringify(this.jsonForm)) as Record<string, string>;
+        data = Object.entries(this.jsonForm).reduce((acc: any, [key, val]) => {
+          acc[key] = typeof(val) === 'string' ? val : JSON.stringify(val);
+          return acc;
+        }, {} as Record<string, string>);
       }
 
       const historyItem: HistoryRequest = {
