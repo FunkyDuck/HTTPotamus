@@ -1,7 +1,7 @@
 <nav>
     <ul>
-        <li id="nav-history" (click)="updatePage('history')" class="active">🕘</li> <!-- History -->
-        <li id="nav-collection" (click)="updatePage('collection')">💾</li> <!-- Saved requests -->
+        <li id="nav-history" (click)="updatePage('history')">🕘</li> <!-- History -->
+        <li id="nav-collection" (click)="updatePage('collection')" class="active">💾</li> <!-- Saved requests -->
         <li id="nav-settings" (click)="updatePage('settings')">⚙️</li> <!-- Settings -->
     </ul>
     <h2>{{upperFirstChar(view)}}</h2>
@@ -12,7 +12,7 @@
 }
 
 @if (view === 'collection') {
-    <app-request-saved  />
+    <app-collections />
 }
 
 @if (view === 'settings') {

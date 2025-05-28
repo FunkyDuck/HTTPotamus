@@ -143,10 +143,10 @@ form#keyval-form {
     height: 30dvh;
     margin: auto;
     padding: 0;
-    margin-left: -13dvw;
+    left: 0;
     line-height: 3.5dvh;
     align-items: center;
-    display: flex;
+    display: flex-start;
     flex-direction: column;
     align-content: flex-start;
     overflow-y: scroll;

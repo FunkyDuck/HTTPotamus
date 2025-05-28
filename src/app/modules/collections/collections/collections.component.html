@@ -1,0 +1,14 @@
+@if (displayModal) {
+    <app-add-collection-modal (closed)="onModalClosed()" />
+}
+
+<ul>
+    <li>
+        <button type="button" (click)="displayModal = true">Add collection</button>
+    </li>
+    
+    <li>C1</li>
+    <li>C2</li>
+    <li>C3 : Test for saved collections</li>
+    <li>MegaStore : Payments Collections Requests and data received</li>
+</ul>

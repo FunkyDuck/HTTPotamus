@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestHistoryComponent } from "../../request-history/request-history/request-history.component";
-import { RequestSavedComponent } from "../../request-saved/request-saved/request-saved.component";
+import { CollectionsComponent } from '../../collections/collections/collections.component';
 import { SettingsComponent } from "../../settings/settings/settings.component";
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [RequestHistoryComponent, RequestSavedComponent, SettingsComponent],
+  imports: [RequestHistoryComponent, CollectionsComponent, SettingsComponent],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })
@@ -15,7 +15,7 @@ export class SideBarComponent implements OnInit {
   protected view: string;
 
   constructor() {
-    this.view = this.navigate[0];
+    this.view = this.navigate[1];
   }
 
   ngOnInit(): void {

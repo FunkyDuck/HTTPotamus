@@ -1,0 +1,20 @@
+@use 'colors';
+
+ul {
+    list-style: none;
+    width: 18dvw;
+    margin: 1dvh -1dvw;
+
+    li {
+        button {
+            height: 3.5dvh;
+            width: 18dvw;
+            margin: 0;
+            margin-bottom: 0.5dvh;
+            border: none;
+            border-radius: 8px;
+            background:  colors.$grey-secondary;
+            transition: background 0.2s ease;
+        }
+    }
+}
