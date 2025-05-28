@@ -1,9 +1,9 @@
 <section>
     <form>
         <h1>Add new collection</h1>
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" placeholder="Collection Title" (input)="onInput($event)" />
         <div>
-            <button type="button">Create collection</button>
+            <button type="button" (click)="addCollection()">Create collection</button>
             <button type="button" class="red" (click)="close()">Stop Cooking 🍜</button>
         </div>
     </form>

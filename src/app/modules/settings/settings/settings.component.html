@@ -1,5 +1,5 @@
 <ul>
-    <!-- Save/Export in json format -->
+    <!-- Db data -->
     <li id="set-datas" class="selected">
         <h2 (click)="displaySettings('datas')">💾 Datas</h2> 
         <form id="form-datas" class="hidden">
@@ -7,10 +7,12 @@
             <button type="button" (click)="uploadDb()" >Upload</button>
             <i>- or -</i>
             <button type="button" (click)="downloadDb()">Download</button>
+            <i>- or -</i>
+            <button type="button" class="warn" >Delete All datas</button>
         </form>
     </li>
 
-    <!-- Delete datas -->
+    <!-- History datas -->
     <li id="set-history">
         <h2 (click)="displaySettings('history')">🕓 History</h2> 
 

@@ -7,8 +7,11 @@
         <button type="button" (click)="displayModal = true">Add collection</button>
     </li>
     
-    <li>C1</li>
+    @for (c of collections; track c) {
+        <li>{{ c.name }}</li>
+    }
+    <!-- <li>C1</li>
     <li>C2</li>
     <li>C3 : Test for saved collections</li>
-    <li>MegaStore : Payments Collections Requests and data received</li>
+    <li>MegaStore : Payments Collections Requests and data received</li> -->
 </ul>

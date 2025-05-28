@@ -89,6 +89,18 @@ export class StorageService {
     }
   }
 
+  async addCollection(req: RequestCollection) {
+    const db = await this.dbPromise;
+    await db.add('collection', req);
+    this.getCollection();
+  }
+
+  async getCollection() {
+    const db = await this.dbPromise;
+    const res = await db.getAllFromIndex('collection', 'by-createdAt');
+    this._collection$.next(res);
+  }
+
   async addHistory(req: HistoryRequest) {
     const db = await this.dbPromise;
     await db.add('history', req);
@@ -98,7 +110,6 @@ export class StorageService {
   }
 
   async getHistory() {
-    console.log('ON GET HISTORY')
     const db = await this.dbPromise;
     const res = await db.getAllFromIndex('history', 'by-createdAt');
     this._history$.next(res);
