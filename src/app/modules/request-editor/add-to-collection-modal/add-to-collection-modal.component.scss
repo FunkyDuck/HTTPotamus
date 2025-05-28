@@ -1,0 +1,43 @@
+@use 'colors';
+
+section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: colors.$alpha-50-purple;
+    z-index: 500;
+
+    form {
+        width: 45dvw;
+        margin: 10dvh auto;
+        padding: 2.5dvh 2.5dvw;
+        background: colors.$dark-main;
+        border-radius: 8px;
+        // border: 1px solid colors.$grey-main;
+
+        display: flex;
+        flex-direction: column;
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            button {
+                width: 49%;
+                height: 3.5dvh;
+                margin: 0.5dvh 0;
+                border: none;
+                border-radius: 8px;
+                background:  colors.$grey-secondary;
+                transition: background 0.2s ease;
+
+                &.red {
+                    background: colors.$red;
+                }
+            }
+        }
+    }
+}

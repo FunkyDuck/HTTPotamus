@@ -4,7 +4,7 @@
         <li id="nav-collection" (click)="updatePage('collection')" class="active">💾</li> <!-- Saved requests -->
         <li id="nav-settings" (click)="updatePage('settings')">⚙️</li> <!-- Settings -->
     </ul>
-    <h2>{{upperFirstChar(view)}}</h2>
+    <h2>{{ setTitle(view) }}</h2>
 </nav>
 
 @if (view === 'history') {

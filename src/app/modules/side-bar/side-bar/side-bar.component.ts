@@ -32,7 +32,14 @@ export class SideBarComponent implements OnInit {
     document.getElementById(`nav-${page}`)?.classList.add('active');
   }
 
-  upperFirstChar(str: string) {
-    return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+  setTitle(str: string): string {
+    if(str === 'history')
+      return 'History';
+    if(str === 'collection')
+      return 'Flavors';
+    if(str === 'settings')
+      return 'Settings';
+
+    return 'HTTPotamus';
   }
 }

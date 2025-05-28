@@ -42,6 +42,8 @@ export class StorageService {
   public collection$ = this._collection$.asObservable();
   private _saved$ = new BehaviorSubject<SavedRequest[]>([]);
   public saved$ = this._saved$.asObservable();
+  private _requested$ = new BehaviorSubject<any>([]);
+  public requested$ = this._requested$.asObservable();
 
   async requestPersistentStorage() {
     if(navigator.storage && await navigator.storage.persist()) {
@@ -100,6 +102,37 @@ export class StorageService {
     const res = await db.getAllFromIndex('collection', 'by-createdAt');
     this._collection$.next(res);
   }
+
+  async getAllCollection() {
+    const db = await this.dbPromise;
+    const collections = await db.getAllFromIndex('collection', 'by-createdAt');
+    let res: any = [];
+    for (const c of collections) {
+      const requests = await db.getAllFromIndex('saved', 'by-collection', c.id);
+      res.push({
+        name: c.name,
+        id: c.id,
+        createdAt: c.createdAt,
+        description: c.description,
+        requests: requests
+      });
+    };
+
+    this._requested$.next(res);
+  }
+
+  async addToCollection(req: SavedRequest) {
+    const db = await this.dbPromise;
+    await db.add('saved', req);
+    this.getAllCollection();
+  }
+
+  // async getOneCollection(collectionId: string) {
+  //   const db = await this.dbPromise;
+  //   const collection = await db.get('collection', collectionId);
+  //   const requests = await db.getAllFromIndex('saved', 'by-collection', collectionId);
+  //   this._requested$.next({collection, requests});
+  // }
 
   async addHistory(req: HistoryRequest) {
     const db = await this.dbPromise;

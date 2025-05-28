@@ -6,6 +6,9 @@ ul {
     margin: 1dvh -1dvw;
 
     li {
+        display: flex;
+        flex-direction: column;
+
         button {
             height: 3.5dvh;
             width: 18dvw;
@@ -13,8 +16,15 @@ ul {
             margin-bottom: 0.5dvh;
             border: none;
             border-radius: 8px;
+            font-weight: 500;
+            font-size: 1.25rem;
             background:  colors.$grey-secondary;
             transition: background 0.2s ease;
+        }
+
+        ul {
+            margin: 0;
+            // margin-left: dvw;
         }
     }
 }

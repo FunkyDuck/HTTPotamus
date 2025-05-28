@@ -20,8 +20,11 @@ export class CollectionsComponent implements OnInit {
   }
 
   getCollections(): void {
-    this._store.collection$.subscribe(c => this.collections = c.sort((a, b) => { return b.createdAt - a.createdAt; }));
-    this._store.getCollection();
+    // this._store.collection$.subscribe(c => this.collections = c.sort((a, b) => { return b.createdAt - a.createdAt; }));
+    // this._store.getCollection();
+    // console.log(this.collections)
+    this._store.requested$.subscribe((c: any) => this.collections = c.sort((a: any, b: any) => { return b.createdAt - a.createdAt }));
+    this._store.getAllCollection();
     console.log(this.collections)
   }
 

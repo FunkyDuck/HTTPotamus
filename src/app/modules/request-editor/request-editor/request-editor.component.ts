@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../../../core/storage.service';
 import { HistoryRequest } from '../../../core/storage';
+import { AddToCollectionModalComponent } from '../add-to-collection-modal/add-to-collection-modal.component';
 
 @Component({
   selector: 'app-request-editor',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, AddToCollectionModalComponent],
   templateUrl: './request-editor.component.html',
   styleUrl: './request-editor.component.scss'
 })
@@ -29,6 +30,7 @@ export class RequestEditorComponent implements OnInit {
     'https://pokeapi.co/api/v2/pokemon/',
     'https://www.eightballapi.com/api'
   ];
+  displayCollectionModal: boolean = false;
 
   constructor(private _req: RequestService, private _storage: StorageService) {
     this.method = this.methods[0];
@@ -114,6 +116,44 @@ export class RequestEditorComponent implements OnInit {
     if(last && (selkey !== '' || selvalue !== '')) {
       this.arrayForm.push({slider: 1, key: '', value: ''});
     }
+  }
+
+  addToCollection(): void {
+
+  }
+
+  onModalClosed(): void {
+    this.displayCollectionModal = false;
+  }
+
+  setDataForModal(): any {
+    let data;
+
+    if(this.selectedForm === 'keyval') {
+      data = this.formToRecord();
+    }
+
+    if(this.selectedForm === 'json') {
+      try {
+        data = JSON.parse(this.jsonForm)
+      } catch (err) {
+        const json = {
+          body: {
+            error: err
+          }
+        };
+        this._req.updateResponse(json);
+      }
+    }
+
+    const item: any = {
+      method: this.method,
+      url: this.url,
+      headers: data,
+      createdAt: Date.now()
+    }
+
+    return item;
   }
 
   updateSlider(idx: number): void {

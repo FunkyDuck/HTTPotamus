@@ -4,14 +4,18 @@
 
 <ul>
     <li>
-        <button type="button" (click)="displayModal = true">Add collection</button>
+        <button type="button" title="❓ Create collections for your requests" (click)="displayModal = true">Create Flavor</button>
     </li>
     
     @for (c of collections; track c) {
-        <li>{{ c.name }}</li>
+        <li>
+            <h2>📁 {{ c.name }}</h2>
+            
+            <ul>
+                @for (r of c.requests; track r) {
+                    <li>🔗 {{ r.url }}</li>
+                }
+            </ul>
+        </li>
     }
-    <!-- <li>C1</li>
-    <li>C2</li>
-    <li>C3 : Test for saved collections</li>
-    <li>MegaStore : Payments Collections Requests and data received</li> -->
 </ul>

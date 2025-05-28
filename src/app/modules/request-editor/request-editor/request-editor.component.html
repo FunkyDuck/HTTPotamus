@@ -1,3 +1,7 @@
+@if (displayCollectionModal) {
+    <app-add-to-collection-modal [data]="setDataForModal()" (closed)="onModalClosed()" />
+}
+
 <form id="url-search">
     <div class="select-wrapper">
         <select [(ngModel)]="method" name="method">
@@ -14,7 +18,10 @@
         <button id="json-btn" (click)="displayForm('json')">Json</button>
     </div>
 
-    <button (click)="getInstant()">🍜 Instant Ramen</button>
+    <div>
+        <button (click)="displayCollectionModal = true">🥘 Add to yours flavors</button>
+        <button (click)="getInstant()">🍜 Instant Ramen</button>
+    </div>
 </section>
 
 <form id="keyval-form">
