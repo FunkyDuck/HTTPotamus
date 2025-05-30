@@ -13,7 +13,7 @@
             
             <ul>
                 @for (r of c.requests; track r) {
-                    <li>🔗 {{ r.url }}</li>
+                    <li (click)="setRequestEditor(r)"><b class="{{ r.method.toLowerCase() }}">{{ r.method }}</b> <i>{{ formatTitle(r.url) }}</i></li>
                 }
             </ul>
         </li>

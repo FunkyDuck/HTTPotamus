@@ -17,7 +17,8 @@ export class AddToCollectionModalComponent implements OnInit {
   constructor(private _store: StorageService) {}
 
   ngOnInit(): void {
-    this._store.collection$.subscribe(c => this.collections = c.sort((a, b) => { return b.createdAt - a.createdAt; }));
+    this._store.requested$.subscribe(c => this.collections = c.sort((a: any, b: any) => { return b.createdAt - a.createdAt; }));
+    console.log(this.collections)
     this.select = this.collections[0].id;
     this.data.collectionId = this.select;
   }

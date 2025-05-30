@@ -1,7 +1,3 @@
-@if (displayCollectionModal) {
-    <app-add-to-collection-modal [data]="setDataForModal()" (closed)="onModalClosed()" />
-}
-
 <form id="url-search">
     <div class="select-wrapper">
         <select [(ngModel)]="method" name="method">
@@ -11,6 +7,11 @@
     <input type="url" name="url" [(ngModel)]="url" placeholder="https://api.sampleapis.com/beers/ale" (keyup)="sendRequest($event)">
     <button type="button" (click)="sendRequest()">Slurp !</button>
 </form>
+
+<!-- Keep AddToCollectionModal between the two froms - moving it break the layout when the modal shows up -->
+@if (displayCollectionModal) {
+    <app-add-to-collection-modal [data]="setDataForModal()" (closed)="onModalClosed()" />
+}
 
 <section>
     <div>
