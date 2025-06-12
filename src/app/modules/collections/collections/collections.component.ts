@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { AddCollectionModalComponent } from "../add-collection-modal/add-collection-modal.component";
 import { StorageService } from '../../../core/storage.service';
 import { RequestService } from '../../../core/request.service';
+import { ManageCollectionModalComponent } from '../manage-collection-modal/manage-collection-modal.component';
 
 @Component({
   selector: 'app-collections',
   standalone: true,
-  imports: [AddCollectionModalComponent],
+  imports: [AddCollectionModalComponent, ManageCollectionModalComponent],
   templateUrl: './collections.component.html',
   styleUrl: './collections.component.scss'
 })
 export class CollectionsComponent implements OnInit {
   displayModal: boolean = false;
+  displayManageCollection: boolean = false;
   collections: any;
+  selectedCollection = null;
 
   constructor(private _store: StorageService, private _req: RequestService) {}
 
@@ -41,6 +44,8 @@ export class CollectionsComponent implements OnInit {
 
   onModalClosed(): void {
     this.displayModal = false;
+    this.displayManageCollection = false;
+    this.selectedCollection = null;
     this.getCollections();
   }
 }

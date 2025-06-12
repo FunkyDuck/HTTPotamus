@@ -1,0 +1,125 @@
+@use 'colors';
+
+section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: colors.$alpha-50-purple;
+    z-index: 500;
+
+    div {
+        width: 45dvw;
+        max-height: 80dvh;
+        margin: 10dvh auto;
+        padding: 2.5dvh 2.5dvw;
+        background: colors.$dark-main;
+        border-radius: 8px;
+        // border: 1px solid colors.$grey-main;
+
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-family: Audiowide;
+
+            i {
+                color: colors.$purple-light;
+                font-style: italic;
+            }
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0.5dvh 0;
+                border-bottom: 0.1px solid colors.$light-main;
+                
+                button.trash {
+                    font-weight: 900;
+                    color: colors.$red;
+                    background: none;
+                    border: none;
+                }
+            }
+        }
+
+        article#show-request {
+            display: flex;
+            flex-direction: column;
+            // background: colors.$grey-secondary;
+            width: 100%;
+
+            h3 {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                button {
+                    background: colors.$red;
+                    color: colors.$dark-main;
+                    border-radius: 8px;
+                    padding: 0.5dvh 1dvw;
+                    border: none;
+                    font-weight: bold;
+                }
+            }
+
+            pre {
+                overflow: scroll;
+                scrollbar-width: thin;
+                scrollbar-color: colors.$green-main colors.$dark-main;
+                padding: 0.5dvh 0.5dvw;
+                background: colors.$grey-code-editor;
+            }
+        }
+
+        article#buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            button {
+                width: 49%;
+                height: 3.5dvh;
+                margin: 0.5dvh 0;
+                border: none;
+                border-radius: 8px;
+                background:  colors.$grey-secondary;
+                transition: background 0.2s ease;
+                font-weight: bold;
+
+                &.red {
+                    background: colors.$red;
+                }
+            }
+        }
+    }
+}
+
+b {
+    &.get {
+        color: colors.$green-secondary;
+        // background: colors.$green-secondary-light;
+    }
+        
+    &.post {
+        color: colors.$blue;
+        // background: colors.$blue-light;
+    }
+        
+    &.put {
+        color: colors.$orange;
+        // background: colors.$orange-light;
+    }
+    
+    &.delete {
+        color: colors.$red;
+        // background: colors.$red-light;
+    }
+}

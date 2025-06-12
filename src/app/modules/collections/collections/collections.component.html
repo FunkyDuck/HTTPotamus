@@ -2,6 +2,10 @@
     <app-add-collection-modal (closed)="onModalClosed()" />
 }
 
+@if (displayManageCollection && selectedCollection) {
+    <app-manage-collection-modal [collection]="selectedCollection" (closed)="onModalClosed()" />
+}
+
 <ul>
     <li>
         <button type="button" title="❓ Create collections for your requests" (click)="displayModal = true">Create Flavor</button>
@@ -9,7 +13,7 @@
     
     @for (c of collections; track c) {
         <li>
-            <h2>📁 {{ c.name }}</h2>
+            <h2 (click)="selectedCollection = c; displayManageCollection = true">📁 {{ c.name }}</h2>
             
             <ul>
                 @for (r of c.requests; track r) {

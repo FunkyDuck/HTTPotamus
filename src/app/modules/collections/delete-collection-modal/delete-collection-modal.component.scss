@@ -1,0 +1,60 @@
+@use 'colors';
+
+section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: colors.$alpha-50-purple;
+    z-index: 750;
+
+    div {
+        width: 40dvw;
+        height: 20dvh;
+        // width: 45dvw;
+        // max-height: 80dvh;
+        margin: 40dvh auto;
+        padding: 2.5dvh 2.5dvw;
+        background: colors.$dark-main;
+        border-radius: 8px;
+        // border: 1px solid colors.$grey-main;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            font-family: Audiowide;
+
+        }
+
+        p {
+            color: colors.$purple-light;
+        }
+
+        span {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            
+            button {
+                border-radius: 8px;
+                border: none;
+                color: colors.$light-main;
+                margin: 0.5dvh 2dvw;
+                padding: 0.5dvh 2dvw;
+                font-weight: bold;
+                font-size: 1.25rem;
+
+                &:first-child {
+                    background: colors.$green-secondary;
+                }
+
+                &:last-child {
+                    background: colors.$red;
+                }
+            }
+        }
+    }
+}

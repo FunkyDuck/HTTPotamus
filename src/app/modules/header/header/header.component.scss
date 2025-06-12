@@ -9,6 +9,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     background: colors.$dark-secondary;
+    border-bottom: 1px solid colors.$purple;
     
     h1 {
         display: flex;
