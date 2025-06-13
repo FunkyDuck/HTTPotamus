@@ -3,6 +3,7 @@ import * as Prism from 'prismjs';
 import 'prismjs/components/prism-json';
 import { DeleteCollectionModalComponent } from '../delete-collection-modal/delete-collection-modal.component';
 import { StorageService } from '../../../core/storage.service';
+import { RequestService } from '../../../core/request.service';
 
 @Component({
   selector: 'app-manage-collection-modal',
@@ -18,7 +19,7 @@ export class ManageCollectionModalComponent implements OnInit {
   highlitedJson: string = '';
   displayDelete: boolean = false;
 
-  constructor(private _store: StorageService) {}
+  constructor(private _store: StorageService, private _req: RequestService) {}
 
   ngOnInit(): void {
     console.log(this.collection)
@@ -30,8 +31,12 @@ export class ManageCollectionModalComponent implements OnInit {
     this.highlitedJson = Prism.highlight(raw, Prism.languages['json'], 'json');
   }
 
-  deleteRequest(request: any): void {
-    console.log(request)
+  deleteRequest(): void {
+    this.displayDelete = true;
+  }
+
+  deleteCollection(collection: any): void {
+    this.selectedRequest = collection;
     this.displayDelete = true;
   }
 
@@ -42,11 +47,25 @@ export class ManageCollectionModalComponent implements OnInit {
   onModalClosed(e: boolean): void {
     if(e === true) {
       if(this.selectedRequest === this.collection) {
-        console.log('delete Collection');
+        this.collection.requests.forEach((r: any) => {
+          this._store.deleteRequest(r.id);
+        });
+
+        this._store.deleteCollection(this.collection.id);
+
+        const json = {
+          body:  {
+            action: 'Collection deleted',
+            collection: this.collection.name,
+            success: true
+          }
+        };
+
+        this._req.updateResponse(json);
+        this.close();
       }
       else {
-        console.log('delete Request')
-        this.collection.requests = this.collection.requests.filter((c: any) => c !== this.selectedRequest);
+        this.collection.requests = this.collection.requests.filter((r: any) => r !== this.selectedRequest);
         this._store.deleteRequest(this.selectedRequest.id);
       }
     }

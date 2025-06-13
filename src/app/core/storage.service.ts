@@ -133,6 +133,12 @@ export class StorageService {
     this.getAllCollection();
   }
 
+  async deleteCollection(id: string) {
+    const db = await this.dbPromise;
+    await db.delete('collection', id);
+    this.getAllCollection();
+  }
+
   // async getOneCollection(collectionId: string) {
   //   const db = await this.dbPromise;
   //   const collection = await db.get('collection', collectionId);
