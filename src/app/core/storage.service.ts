@@ -127,6 +127,12 @@ export class StorageService {
     this.getAllCollection();
   }
 
+  async deleteRequest(id: number) {
+    const db = await this.dbPromise;
+    await db.delete('saved', id);
+    this.getAllCollection();
+  }
+
   // async getOneCollection(collectionId: string) {
   //   const db = await this.dbPromise;
   //   const collection = await db.get('collection', collectionId);

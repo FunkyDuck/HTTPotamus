@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-collection-modal',
@@ -8,12 +8,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrl: './delete-collection-modal.component.scss'
 })
 export class DeleteCollectionModalComponent implements OnInit {
-  @Input() objectToDelete = null;
-  @Output() closed = new EventEmitter<void>();
+  @Output() closed = new EventEmitter<boolean>();
 
   constructor() {}
 
   ngOnInit(): void {
-    
+  }
+
+  close(b: boolean): void {
+    this.closed.emit(b);
   }
 }

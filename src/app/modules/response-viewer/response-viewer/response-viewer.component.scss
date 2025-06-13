@@ -30,6 +30,14 @@ section {
                 cursor: pointer;
                 background: colors.$grey-secondary;
                 transition: background 0.2s ease;
+
+                &.disabled {
+                    background: colors.$green-main;
+
+                    &:hover {
+                        background: colors.$green-main;
+                    }
+                }
                 
                 &:first-child {
                     border-radius: 8px 0 0 8px;

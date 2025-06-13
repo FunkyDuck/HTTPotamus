@@ -1,8 +1,8 @@
 <nav>
     <ul>
-        <li id="nav-history" (click)="updatePage('history')">🕘</li> <!-- History -->
-        <li id="nav-collection" (click)="updatePage('collection')" class="active">💾</li> <!-- Saved requests -->
-        <li id="nav-settings" (click)="updatePage('settings')">⚙️</li> <!-- Settings -->
+        <li id="nav-history" (click)="updatePage('history')"><img src="assets/icons/ico_time.svg" class="ico-xl" /></li> <!-- History -->
+        <li id="nav-collection" (click)="updatePage('collection')" class="active"><img src="assets/icons/ico_floppydisk.svg" class="ico-xl" /></li> <!-- Saved requests -->
+        <li id="nav-settings" (click)="updatePage('settings')"><img src="assets/icons/ico_gear.svg" class="ico-xl" /></li> <!-- Settings -->
     </ul>
     <h2>{{ setTitle(view) }}</h2>
 </nav>

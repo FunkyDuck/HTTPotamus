@@ -19,7 +19,11 @@ nav {
         padding: 0;
     
         li {
+            display: flex;
+            flex-direction: column;
             text-align: center;
+            align-items: center;
+            justify-content: center;
             height: 5dvh;
             width: calc(18dvw/3);
             line-height: 5dvh;

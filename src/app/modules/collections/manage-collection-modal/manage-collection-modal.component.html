@@ -1,5 +1,5 @@
-@if (displayDelete) {
-    <app-delete-collection-modal />
+@if (displayDelete && selectedRequest) {
+    <app-delete-collection-modal (closed)="onModalClosed($event)" />
 }
 
 <section>
@@ -13,7 +13,7 @@
                         <b class="{{ r.method.toLowerCase() }}">{{ r.method }} </b>
                         <i> {{r.url}}</i>
                     </span>
-                    <button class="trash" (click)="deleteRequest(r); $event.stopPropagation()">X</button>
+                    <button class="trash" (click)="deleteRequest(r)">X</button>
                 </li>
 
 
@@ -27,7 +27,7 @@
                         <b class="{{selectedRequest.method.toLowerCase()}}">{{selectedRequest.method}} </b> 
                         <i> {{ selectedRequest.url}}</i>
                     </span>
-                    <button class="red">Delete</button>
+                    <button class="red" (click)="deleteRequest(selectedRequest)">Delete</button>
                 </h3>
                 <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
             </article>

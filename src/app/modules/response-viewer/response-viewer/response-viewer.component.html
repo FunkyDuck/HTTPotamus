@@ -3,8 +3,11 @@
     
     <div>
         <div>
+            <!-- <button class="disabled" disabled>Body</button> -->
             <button id="btn-pretty" (click)="toggleFormat('pretty')" class="selected">Pretty</button>
             <button id="btn-raw" (click)="toggleFormat('raw')">Raw</button>
+            <!-- <button class="disabled" disabled>Headers</button> -->
+             <!-- Add button to show  headers -->
             <button (click)="copyToClipboard()">Copy</button>
         </div>
             
@@ -16,4 +19,5 @@
     
     <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
     <pre id="format-raw"><code class="language-json">{{ jsonRaw }}</code></pre>
+    <!-- add array to visualise headers -->
 </section>

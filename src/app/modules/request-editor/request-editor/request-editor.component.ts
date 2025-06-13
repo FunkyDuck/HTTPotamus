@@ -55,7 +55,7 @@ export class RequestEditorComponent implements OnInit {
     this._req.request$.subscribe((r: any) => {
       this.method = r.method;
       this.url = r.url;
-      this.arrayForm = Object.entries(r.headers || {}).map(([key, value]) => ({
+      this.arrayForm = Object.entries(r.body || {}).map(([key, value]) => ({
         slider: 1,
         key,
         value: String(value)
@@ -96,7 +96,7 @@ export class RequestEditorComponent implements OnInit {
       const historyItem: HistoryRequest = {
         method: this.method,
         url: this.url,
-        headers: data,
+        body: data,
         createdAt: Date.now()
       }
 
@@ -149,7 +149,7 @@ export class RequestEditorComponent implements OnInit {
     const item: any = {
       method: this.method,
       url: this.url,
-      headers: data,
+      body: data,
       createdAt: Date.now()
     }
 
