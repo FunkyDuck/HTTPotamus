@@ -18,6 +18,9 @@ export class ResponseViewerComponent implements OnInit {
   duration: number = 0;
   status: number = 0;
   statusText: string = '';
+  headers: any;
+  bodySize: number = 0;
+  headersSize: number = 0;
 
   constructor(private _req: RequestService) {}
 
@@ -29,6 +32,13 @@ export class ResponseViewerComponent implements OnInit {
           this.duration = data.duration;
           this.status = data.status;
           this.statusText = data.statusText;
+          this.headers = data.headers ?? [];
+          this.headersSize = data.headersSize;
+          this.bodySize = data.bodySize;
+
+          console.log('HEADERS', this.headers)
+          console.log('HEADERS KEYS', this.headers.keys())
+          console.info('CONTENT-TYPE', this.headers.get('content-type'))
 
           if(data.error) {
             console.warn(data.status)
@@ -51,11 +61,15 @@ export class ResponseViewerComponent implements OnInit {
     const prettyPre = document.getElementById("format-pretty");
     const rawBtn = document.getElementById("btn-raw");
     const prettyBtn = document.getElementById("btn-pretty");
+    const headersPre = document.getElementById("format-headers");
+    const headersBtn = document.getElementById("btn-headers");
     
     rawBtn?.classList.remove("selected");
     rawPre?.classList.remove("selected");
     prettyBtn?.classList.remove("selected");
     prettyPre?.classList.remove("selected");
+    headersBtn?.classList.remove("selected");
+    headersPre?.classList.remove("selected");
     
     if(format === "raw") {
       rawBtn?.classList.add("selected");
@@ -65,6 +79,11 @@ export class ResponseViewerComponent implements OnInit {
     if(format === "pretty") {
       prettyBtn?.classList.add("selected");
       prettyPre?.classList.add("selected");
+    }
+    
+    if(format === "headers") {
+      headersBtn?.classList.add("selected");
+      headersPre?.classList.add("selected");
     }
   }
   
@@ -89,6 +108,10 @@ export class ResponseViewerComponent implements OnInit {
     if(this.status >= 400 && this.status < 500) return 'orange';
     if(this.status >= 500 || this.status === 0) return 'red';
     return '';
+  }
+
+  getSizesString(): string {
+    return `Headers:  ${this.headersSize}\nBody: ${this.bodySize}`;
   }
 }
 

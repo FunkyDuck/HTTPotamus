@@ -3,16 +3,20 @@
     
     <div>
         <div>
-            <!-- <button class="disabled" disabled>Body</button> -->
+            <button class="disabled" disabled>Body</button>
             <button id="btn-pretty" (click)="toggleFormat('pretty')" class="selected">Pretty</button>
             <button id="btn-raw" (click)="toggleFormat('raw')">Raw</button>
-            <!-- <button class="disabled" disabled>Headers</button> -->
-             <!-- Add button to show  headers -->
+            <button id="btn-headers" (click)="toggleFormat('headers')">Headers</button>
             <button (click)="copyToClipboard()">Copy</button>
+        </div>
+        
+        <div>
+             <!-- Add button to show  headers -->
         </div>
             
         <div>
             <article id="display-timer">Duration:&nbsp;<b>{{ duration }}ms</b></article>
+            <article id="display-size" [title]="getSizesString()">Size:&nbsp;<b>{{ (headersSize + bodySize).toFixed(2) }}ko</b></article>
             <article id="display-status" [ngClass]="getClass()">Status:&nbsp;<b>{{ status }} {{ statusText }}</b></article>
         </div>
     </div>
@@ -20,4 +24,20 @@
     <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
     <pre id="format-raw"><code class="language-json">{{ jsonRaw }}</code></pre>
     <!-- add array to visualise headers -->
+    <table id="format-headers">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (h of headers.keys(); track h) {
+                <tr>
+                    <td>{{h}}</td>
+                    <td>{{headers.get(h)}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </section>

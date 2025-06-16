@@ -4,7 +4,7 @@
         <li id="nav-collection" (click)="updatePage('collection')" class="active"><img src="assets/icons/ico_floppydisk.svg" class="ico-xl" /></li> <!-- Saved requests -->
         <li id="nav-settings" (click)="updatePage('settings')"><img src="assets/icons/ico_gear.svg" class="ico-xl" /></li> <!-- Settings -->
     </ul>
-    <h2>{{ setTitle(view) }}</h2>
+    <h2>{{ setTitle(view) | translate }}</h2>
 </nav>
 
 @if (view === 'history') {

@@ -1,0 +1,34 @@
+{
+  "SETTINGS": {
+    "TITLE": "Paramètres",
+    "OR": "ou",
+    "SOON": "Bientôt disponible",
+    "DATAS": {
+      "TITLE": "Données",
+      "UP": "Importer",
+      "DOWN": "Exporter",
+      "DEL": "Supprimer toutes les données"
+    },
+    "HISTORY": {
+      "TITLE": "Historique",
+      "MOD": "Modifier",
+      "DEL": "Supprimer l’historique actuel"
+    },
+    "THEME": {
+        "TITLE": "Thème"
+    },
+    "FONT": {
+        "TITLE": "Police"
+    },
+    "LANG": {
+        "TITLE": "Langue",
+        "BTN": "Changer la langue"
+    },
+    "ABOUT": {
+      "TITLE": "À propos",
+      "VERSION": "Version",
+      "DEV_BY": "Développé par",
+      "TEXT": "est un outil léger pour tester et organiser vos requêtes HTTP, conçu avec passion."
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { ResponseViewerComponent } from './modules/response-viewer/response-view
 import { FormsModule } from '@angular/forms';
 import { SideBarComponent } from "./modules/side-bar/side-bar/side-bar.component";
 import { StorageService } from './core/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,13 @@ import { StorageService } from './core/storage.service';
 export class AppComponent implements OnInit {
   title = 'HTTPotamus';
 
-  constructor(private _storage: StorageService) {}
+  constructor(private _storage: StorageService, private _translate: TranslateService) {
+    _translate.addLangs(['en', 'fr', 'nl']);
+    _translate.setDefaultLang('en');
+
+    const browserLang = _translate.getBrowserLang();
+    _translate.use(browserLang?.match(/en|fr|nl/) ? browserLang : 'en');
+  }
 
   ngOnInit(): void {
     this._storage.requestPersistentStorage();

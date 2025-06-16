@@ -25,12 +25,24 @@ export class RequestService {
       map((res: HttpResponse<any>) => {
         const end = performance.now();
         const duration = Math.round(end - start);
+        const bodySize = new TextEncoder().encode(JSON.stringify(res.body) || '').length;
+        const headersKey = res.headers.keys();
+        let headersSize = 0;
+        headersKey.forEach(key => {
+          const val = res.headers.get(key) || '';
+          headersSize += new TextEncoder().encode(`${key}: ${val}\r\n`).length;
+        });
+
+
         
         return {
           status: res.status,
           statusText: res.statusText,
           duration: duration,
-          body: res.body
+          body: res.body,
+          headers: res.headers,
+          bodySize: (bodySize / 1024),
+          headersSize: (headersSize / 1024)
         };
       }),
       catchError((err: HttpErrorResponse) => {

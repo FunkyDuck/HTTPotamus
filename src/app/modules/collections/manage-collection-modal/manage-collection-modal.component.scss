@@ -98,12 +98,14 @@ section {
         article#buttons {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
 
             button {
-                width: 49%;
+                // width: 49%;
+                // width: auto;
                 height: 3.5dvh;
                 margin: 0.5dvh 0;
+                padding: 0.5dvh 1dvw;
                 border: none;
                 border-radius: 8px;
                 background:  colors.$grey-secondary;

@@ -15,7 +15,7 @@ section {
         // justify-content: flex-start;
         // // gap: 2dvw;
 
-        div:first-child {
+        div {
             button {
                 box-sizing: border-box;
                 height: 3.5dvh;
@@ -63,9 +63,9 @@ section {
             article {
                 box-sizing: border-box;
                 height: 3.5dvh;
-                min-width: 15dvw;
+                min-width: 5dvw;
                 max-width: 25dvw;
-                padding: 0.5dvh 1dvw;
+                padding: 0.5dvh 0.5dvw;
                 font-size: 1rem;
                 border: 1px solid colors.$green-main;
                 // line-height: 3.5rem;
@@ -83,7 +83,7 @@ section {
         }
     }
 
-    pre {
+    pre, table {
         width: 70dvw;
         height: 40dvh;
         margin: auto;
@@ -94,6 +94,24 @@ section {
 
         &.selected {
             display: block;
+        }
+
+        th, td {
+            border-bottom: 1px solid colors.$grey-main;
+            border-right: 1px solid colors.$grey-main;
+            width: 20dvw;
+            padding: 0.25dvh 1dvw;
+            margin: 0;
+            text-align: start;
+
+            &:last-child {
+                border-right: none;
+                width: 50dvw;
+            }
+        }
+
+        tr:last-child td{
+            border-bottom: none;
         }
     }
 

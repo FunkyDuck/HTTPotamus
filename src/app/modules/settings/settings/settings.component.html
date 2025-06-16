@@ -1,52 +1,58 @@
 <ul>
     <!-- Db data -->
     <li id="set-datas" class="selected">
-        <h2 (click)="displaySettings('datas')"><img src="assets/icons/ico_floppydisk.svg" class="ico" /> Datas</h2> 
+        <h2 (click)="displaySettings('datas')"><img src="assets/icons/ico_floppydisk.svg" class="ico" /> {{ 'SETTINGS.DATAS.TITLE' | translate }}</h2> 
         <form id="form-datas" class="hidden">
             <input type="file" name="json-data-upload" id="json-data-upload" accept="text/json">
-            <button type="button" (click)="uploadDb()" >Upload</button>
-            <i>- or -</i>
-            <button type="button" (click)="downloadDb()">Download</button>
-            <i>- or -</i>
-            <button type="button" class="warn" >Delete All datas</button>
+            <button type="button" (click)="uploadDb()" >{{ 'SETTINGS.DATAS.UP' | translate }}</button>
+            <i>- {{ 'SETTINGS.OR' | translate }} -</i>
+            <button type="button" (click)="downloadDb()">{{ 'SETTINGS.DATAS.DOWN' | translate }}</button>
+            <i>- {{ 'SETTINGS.OR' | translate }} -</i>
+            <button type="button" class="warn" >{{ 'SETTINGS.DATAS.DEL' | translate }}</button>
         </form>
     </li>
 
     <!-- History datas -->
     <li id="set-history">
-        <h2 (click)="displaySettings('history')"><img src="assets/icons/ico_time.svg" class="ico" /> History</h2> 
+        <h2 (click)="displaySettings('history')"><img src="assets/icons/ico_time.svg" class="ico" /> {{ 'SETTINGS.HISTORY.TITLE' | translate }}</h2> 
 
         <form id="form-history" class="hidden">
             <input type="number" name="history-entries" id="history-entries" min="0" max="100" placeholder="History max saved: ex: 30" defaultValue="25" />
-            <button type="button" (click)="changeMaxHistory()">Modify</button>
-            <i>-- or --</i>
-            <button type="button" class="warn" (click)="deleteCurrentHistory()">Delete current history</button>
+            <button type="button" (click)="changeMaxHistory()">{{ 'SETTINGS.HISTORY.MOD' | translate }}</button>
+            <i>- {{ 'SETTINGS.OR' | translate }} -</i>
+            <button type="button" class="warn" (click)="deleteCurrentHistory()">{{ 'SETTINGS.HISTORY.DEL' | translate }}</button>
         </form>
     </li>
     
     <!-- Dark/Light or colorblind (daltonien) -->
     <li id="set-theme">
-        <h2 (click)="displaySettings('theme')"><img src="assets/icons/ico_art.svg" class="ico" /> Theme</h2> 
-        <div id="form-theme" class="hidden">Coming soon...</div>
+        <h2 (click)="displaySettings('theme')"><img src="assets/icons/ico_art.svg" class="ico" /> {{ 'SETTINGS.THEME.TITLE' | translate }}</h2> 
+        <div id="form-theme" class="hidden">{{ 'SETTINGS.SOON' | translate }}</div>
     </li>
     
     <!-- Load classic font or font for dyslexics -->
     <li id="set-font">
-        <h2 (click)="displaySettings('font')"><img src="assets/icons/ico_abc.svg" class="ico" /> Font</h2>
-        <div id="form-font" class="hidden">Coming soon...</div>
+        <h2 (click)="displaySettings('font')"><img src="assets/icons/ico_abc.svg" class="ico" /> {{ 'SETTINGS.FONT.TITLE' | translate }}</h2>
+        <div id="form-font" class="hidden">{{ 'SETTINGS.SOON' | translate }}</div>
     </li>
     
     <li id="set-langage">
-        <h2 (click)="displaySettings('langage')"><img src="assets/icons/ico_globe.svg" class="ico" /> Langage</h2>
-        <div id="form-langage" class="hidden">Coming soon...</div>
+        <h2 (click)="displaySettings('langage')"><img src="assets/icons/ico_globe.svg" class="ico" /> {{ 'SETTINGS.LANG.TITLE' | translate }}</h2>
+        <form id="form-langage" class="hidden">
+            <select name="lang-choice" (change)="changeLang($event)">
+                @for (l of lang; track l) {
+                    <option value="{{l.code}}">{{l.lang}}</option>
+                }
+            </select>
+        </form>
     </li>
 
     <li id="set-about" class="selected">
-        <h2><img src="assets/icons/ico_brain.svg" class="ico" /> About</h2>
-        <p><b>Version :</b>&nbsp;<i>{{ version }}</i></p>
+        <h2><img src="assets/icons/ico_brain.svg" class="ico" /> {{ 'SETTINGS.ABOUT.TITLE' | translate }}</h2>
+        <p><b>{{ 'SETTINGS.ABOUT.VERSION' | translate }} :</b>&nbsp;<i>{{ version }}</i></p>
         <p><b>GitHub :</b>&nbsp;<i><a href="https://github.com/FunkyDuck/HTTPotamus" target="_blank">HTTPotamus</a></i></p>
-        <p><b>Developed by:</b>&nbsp;<i><a href="https://github.com/FunkyDuck" target="_blank">Loïc <span>`Ginji`</span> Jacques</a></i></p>
-        <p><strong>HTTPotamus</strong> is a lightweight tool for testing and organizing your HTTP requests, developed with passion.<br>
+        <p><b>{{ 'SETTINGS.ABOUT.DEV_BY' | translate }}:</b>&nbsp;<i><a href="https://github.com/FunkyDuck" target="_blank">Loïc <span>`Ginji`</span> Jacques</a></i></p>
+        <p><strong>HTTPotamus</strong> {{ 'SETTINGS.ABOUT.TEXT' | translate }}<br>
         <i>HTTP requests, served hot.</i></p>
     </li>
 </ul>

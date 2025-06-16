@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RequestHistoryComponent } from "../../request-history/request-history/request-history.component";
 import { CollectionsComponent } from '../../collections/collections/collections.component';
 import { SettingsComponent } from "../../settings/settings/settings.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [RequestHistoryComponent, CollectionsComponent, SettingsComponent],
+  imports: [RequestHistoryComponent, CollectionsComponent, SettingsComponent, TranslateModule],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })
@@ -38,7 +39,7 @@ export class SideBarComponent implements OnInit {
     if(str === 'collection')
       return 'Flavors';
     if(str === 'settings')
-      return 'Settings';
+      return 'SETTINGS.TITLE';
 
     return 'HTTPotamus';
   }

@@ -1,0 +1,34 @@
+{
+    "SETTINGS": {
+        "TITLE": "Settings",
+        "OR": "or",
+        "SOON": "Coming soon",
+        "DATAS": {
+            "TITLE": "Datas",
+            "UP": "Upload",
+            "DOWN": "Download",
+            "DEL": "Delete ALL datas"
+        },
+        "HISTORY": {
+            "TITLE": "History",
+            "MOD": "Modify",
+            "DEL": "Delete current history"
+        },
+        "THEME": {
+            "TITLE": "Theme"
+        },
+        "FONT": {
+            "TITLE": "Font"
+        },
+        "LANG": {
+            "TITLE": "Langage",
+            "BTN": "Change langage"
+        },
+        "ABOUT": {
+            "TITLE": "About",
+            "VERSION": "Version",
+            "DEV_BY": "Developed by",
+            "TEXT": "is a lightweight tool for testing and organizing your HTTP requests, developed with passion."
+        }
+    } 
+}

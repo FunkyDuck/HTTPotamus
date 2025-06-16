@@ -1,0 +1,34 @@
+{
+  "SETTINGS": {
+    "TITLE": "Instellingen",
+    "OR": "of",
+    "SOON": "Binnenkort beschikbaar",
+    "DATAS": {
+      "TITLE": "Gegevens",
+      "UP": "Uploaden",
+      "DOWN": "Downloaden",
+      "DEL": "Verwijder ALLE gegevens"
+    },
+    "HISTORY": {
+      "TITLE": "Geschiedenis",
+      "MOD": "Aanpassen",
+      "DEL": "Huidige geschiedenis verwijderen"
+    },
+    "THEME": {
+      "TITLE": "Thema"
+    },
+    "FONT": {
+      "TITLE": "Lettertype"
+    },
+    "LANG": {
+      "TITLE": "Taal",
+      "BTN": "Taal wijzigen"
+    },
+    "ABOUT": {
+      "TITLE": "Over",
+      "VERSION": "Versie",
+      "DEV_BY": "Ontwikkeld door",
+      "TEXT": "is een lichtgewicht tool om je HTTP-verzoeken te testen en te organiseren, met passie ontwikkeld."
+    }
+  }
+}

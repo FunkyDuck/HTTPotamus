@@ -2,18 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../../core/storage.service';
 import { RequestService } from '../../../core/request.service';
 import { appVersion } from '../../../../version'; 
+import { ILang } from '../../../core/Models/ilang';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [],
+  imports: [
+    TranslateModule
+  ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent implements OnInit {
   protected version: string;
+  public lang: ILang[] = [{code: 'FR', lang: 'Français'}, {code: 'EN', lang: 'English'}, {code: 'NL', lang: 'Nederlands'}];
 
-  constructor(private _storage: StorageService, private _request: RequestService) {
+  constructor(private _storage: StorageService, private _request: RequestService, private _translate: TranslateService) {
     this.version = appVersion;
   }
 
@@ -27,6 +32,28 @@ export class SettingsComponent implements OnInit {
       body: data
     };
     this._request.updateResponse(json);
+  }
+
+  changeLang(event: Event): void {
+    const sl: string = ((event.target as any).value).toLowerCase();
+
+    try {
+      this._translate.use(sl);
+  
+      const json = {
+        action: 'Change lang',
+        success: true
+      };
+      this.sendToViewer(json);
+      
+    } catch (err) {
+      const json = {
+        action: 'Change lang',
+        success: false,
+        error: err
+      };
+      this.sendToViewer(json);
+    }
   }
 
   changeMaxHistory(): void {
