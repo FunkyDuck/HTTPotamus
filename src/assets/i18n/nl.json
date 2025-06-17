@@ -1,4 +1,56 @@
 {
+  "EDITOR": {
+    "BTN": {
+      "ADD": "Toevoegen aan je smaken",
+      "RAMEN": "Instant Ramen"
+    },
+    "MODAL": {
+      "TITLE": "Toevoegen aan smaak",
+      "BTN": {
+        "SAVE": "Toevoegen aan smaak",
+        "STOP": "Toch maar niet..."
+      }
+    }
+  },
+  "VIEWER": {
+    "TIMER": "Duur",
+    "SIZE": "Grootte",
+    "STAT": "Status"
+  },
+  "HISTORY": {
+    "TITLE": "Geschiedenis"
+  },
+  "COLLECTION": {
+    "TITLE": "Smaken",
+    "BTN": {
+      "TITLE": "Smaak aanmaken",
+      "HELP": "Maak collecties voor je verzoeken"
+    },
+    "MODAL": {
+      "CREATE": {
+        "TITLE": "Nieuwe smaak toevoegen",
+        "ADD": "Smaak aanmaken",
+        "STOP": "Stop met koken"
+      },
+      "MANAGE": {
+        "TITLE": "Beheer smaak <i>{{name}}</i>",
+        "BTN": {
+          "DELIT": "Verwijder deze",
+          "DEL": "Verwijderen",
+          "STOP": "Stop met koken"
+        }
+      },
+      "DELETE": {
+        "TITLE": "Verwijderen bevestigen?",
+        "WARN": "Dit is permanent. Eenmaal verwijderd, kun je alleen terug met een DeLorean.",
+        "HINT": "TIP: Rijd dan wel 88 mph.",
+        "BTN": {
+          "YES": "Ja, weg ermee!",
+          "NO": "Toch maar niet..."
+        }
+      }
+    }
+  },
   "SETTINGS": {
     "TITLE": "Instellingen",
     "OR": "of",
@@ -7,11 +59,11 @@
       "TITLE": "Gegevens",
       "UP": "Uploaden",
       "DOWN": "Downloaden",
-      "DEL": "Verwijder ALLE gegevens"
+      "DEL": "Alle gegevens verwijderen"
     },
     "HISTORY": {
       "TITLE": "Geschiedenis",
-      "MOD": "Aanpassen",
+      "MOD": "Bewerken",
       "DEL": "Huidige geschiedenis verwijderen"
     },
     "THEME": {
@@ -28,7 +80,7 @@
       "TITLE": "Over",
       "VERSION": "Versie",
       "DEV_BY": "Ontwikkeld door",
-      "TEXT": "is een lichtgewicht tool om je HTTP-verzoeken te testen en te organiseren, met passie ontwikkeld."
+      "TEXT": "is een lichtgewicht tool om je HTTP-verzoeken te testen en organiseren, met passie ontwikkeld."
     }
   }
 }

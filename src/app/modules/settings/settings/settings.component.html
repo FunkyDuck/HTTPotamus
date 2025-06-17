@@ -41,7 +41,7 @@
         <form id="form-langage" class="hidden">
             <select name="lang-choice" (change)="changeLang($event)">
                 @for (l of lang; track l) {
-                    <option value="{{l.code}}">{{l.lang}}</option>
+                    <option value="{{l.code}}" [selected]="currentLang === l.code.toLowerCase()">{{l.lang}}</option>
                 }
             </select>
         </form>

@@ -4,11 +4,12 @@ import 'prismjs/components/prism-json';
 import { DeleteCollectionModalComponent } from '../delete-collection-modal/delete-collection-modal.component';
 import { StorageService } from '../../../core/storage.service';
 import { RequestService } from '../../../core/request.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manage-collection-modal',
   standalone: true,
-  imports: [DeleteCollectionModalComponent],
+  imports: [DeleteCollectionModalComponent, TranslateModule],
   templateUrl: './manage-collection-modal.component.html',
   styleUrl: './manage-collection-modal.component.scss'
 })

@@ -3,11 +3,12 @@ import { AddCollectionModalComponent } from "../add-collection-modal/add-collect
 import { StorageService } from '../../../core/storage.service';
 import { RequestService } from '../../../core/request.service';
 import { ManageCollectionModalComponent } from '../manage-collection-modal/manage-collection-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-collections',
   standalone: true,
-  imports: [AddCollectionModalComponent, ManageCollectionModalComponent],
+  imports: [AddCollectionModalComponent, ManageCollectionModalComponent, TranslateModule],
   templateUrl: './collections.component.html',
   styleUrl: './collections.component.scss'
 })
@@ -40,6 +41,10 @@ export class CollectionsComponent implements OnInit {
     const str = url.replace(/^(https?:\/\/)?(www\.)?/, '');
     const formattedStr = str.charAt(0).toUpperCase() + str.slice(1, 18) + '…';
     return formattedStr;
+  }
+  
+  displayMethod(m: string): string {
+    return (m.length <= 4) ? m : m.substring(0, 3) + '.';
   }
 
   onModalClosed(): void {

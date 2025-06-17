@@ -1,14 +1,14 @@
 <section>
     <form>
-        <h1>Add to flavor</h1>
+        <h1>{{ 'EDITOR.MODAL.TITLE' | translate}}</h1>
         <select (change)="setCollection($event)">
             @for (c of collections; track c) {
                 <option value="{{ c.id }}">{{ c.name }}</option>
             }
         </select>
         <div>
-            <button type="button" (click)="saveToCollection()">🥡 Add to Flavor</button>
-            <button type="button" class="red" (click)="onClose()">✖️ Finaly, no...</button>
+            <button type="button" (click)="saveToCollection()">🥡 {{ 'EDITOR.MODAL.BTN.SAVE' | translate}}</button>
+            <button type="button" class="red" (click)="onClose()">✖️ {{ 'EDITOR.MODAL.BTN.STOP' | translate}}</button>
         </div>
     </form>
 </section>

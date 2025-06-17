@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { StorageService } from '../../../core/storage.service';
 import { HistoryRequest } from '../../../core/storage';
 import { AddToCollectionModalComponent } from '../add-to-collection-modal/add-to-collection-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-request-editor',
   standalone: true,
-  imports: [FormsModule, CommonModule, AddToCollectionModalComponent],
+  imports: [FormsModule, CommonModule, AddToCollectionModalComponent, TranslateModule],
   templateUrl: './request-editor.component.html',
   styleUrl: './request-editor.component.scss'
 })

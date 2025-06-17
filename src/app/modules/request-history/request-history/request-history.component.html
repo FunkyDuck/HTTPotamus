@@ -1,7 +1,7 @@
 <nav>
     <ul>
         @for (h of history; track h) {
-            <li (click)="setRequestEditor(h)"><b class="{{ h.method.toLowerCase() }}">{{ h.method }}</b><i>{{ formatTitle(h.url) }}</i></li>
+            <li (click)="setRequestEditor(h)"><b class="{{ h.method.toLowerCase() }}">{{ displayMethod(h.method) }}</b><i>{{ formatTitle(h.url) }}</i></li>
         }
     </ul>
 </nav>

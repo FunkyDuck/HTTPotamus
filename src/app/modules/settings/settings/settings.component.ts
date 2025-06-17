@@ -17,9 +17,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class SettingsComponent implements OnInit {
   protected version: string;
   public lang: ILang[] = [{code: 'FR', lang: 'Français'}, {code: 'EN', lang: 'English'}, {code: 'NL', lang: 'Nederlands'}];
+  public currentLang: string = 'en';
 
   constructor(private _storage: StorageService, private _request: RequestService, private _translate: TranslateService) {
     this.version = appVersion;
+    this.currentLang = _translate.currentLang;
   }
 
   ngOnInit(): void {
@@ -39,6 +41,8 @@ export class SettingsComponent implements OnInit {
 
     try {
       this._translate.use(sl);
+      this.currentLang = sl;
+      localStorage.setItem('lang', sl);
   
       const json = {
         action: 'Change lang',

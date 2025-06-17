@@ -4,7 +4,7 @@
 
 <section>
     <div>
-        <h1><p>Manage <i>{{ collection?.name }}</i> Flavor</p> <button (click)="deleteCollection(collection)" >Delete it</button></h1>
+        <h1><p [innerHTML]="'COLLECTION.MODAL.MANAGE.TITLE' | translate:{name: collection?.name}"></p> <button (click)="deleteCollection(collection)" >{{ 'COLLECTION.MODAL.MANAGE.BTN.DELIT' | translate }}</button></h1>
 
         <ul>
             @for (r of collection.requests; track r) {
@@ -27,14 +27,14 @@
                         <b class="{{selectedRequest.method.toLowerCase()}}">{{selectedRequest.method}} </b> 
                         <i> {{ selectedRequest.url}}</i>
                     </span>
-                    <button class="red" (click)="deleteRequest()">Delete</button>
+                    <button class="red" (click)="deleteRequest()">{{ 'COLLECTION.MODAL.MANAGE.BTN.DEL' | translate }}</button>
                 </h3>
                 <pre id="format-pretty" class="selected"><code class="language-json" [innerHTML]="highlitedJson"></code></pre>
             </article>
         }
 
         <article id="buttons">
-            <button type="button" class="red" (click)="close()">Stop Cooking 🔪</button>
+            <button type="button" class="red" (click)="close()">{{ 'COLLECTION.MODAL.MANAGE.BTN.STOP' | translate }} 🔪</button>
         </article>
     </div>
 </section>

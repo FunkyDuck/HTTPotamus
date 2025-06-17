@@ -3,11 +3,12 @@ import * as Prism from 'prismjs';
 import 'prismjs/components/prism-json';
 import { RequestService } from '../../../core/request.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-response-viewer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './response-viewer.component.html',
   styleUrl: './response-viewer.component.scss'
 })

@@ -1,10 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { StorageService } from '../../../core/storage.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-to-collection-modal',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './add-to-collection-modal.component.html',
   styleUrl: './add-to-collection-modal.component.scss'
 })

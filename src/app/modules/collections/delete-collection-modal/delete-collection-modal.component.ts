@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delete-collection-modal',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './delete-collection-modal.component.html',
   styleUrl: './delete-collection-modal.component.scss'
 })

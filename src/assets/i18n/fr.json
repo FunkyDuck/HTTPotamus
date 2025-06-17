@@ -1,4 +1,56 @@
 {
+  "EDITOR": {
+    "BTN": {
+      "ADD": "Ajouter à vos saveurs",
+      "RAMEN": "Instant Ramen"
+    },
+    "MODAL": {
+      "TITLE": "Ajouter à la saveur",
+      "BTN": {
+        "SAVE": "Ajouter à la saveur",
+        "STOP": "Finalement, non..."
+      }
+    }
+  },
+  "VIEWER": {
+    "TIMER": "Durée",
+    "SIZE": "Taille",
+    "STAT": "Statut"
+  },
+  "HISTORY": {
+    "TITLE": "Historique"
+  },
+  "COLLECTION": {
+    "TITLE": "Saveurs",
+    "BTN": {
+      "TITLE": "Créer une saveur",
+      "HELP": "Créer une collection pour vos requêtes" 
+    },
+    "MODAL": {
+      "CREATE": {
+        "TITLE": "Ajouter une nouvelle saveur",
+        "ADD": "Créer une saveur",
+        "STOP": "Arrêter de cuisiner"
+      },
+      "MANAGE": {
+        "TITLE": "Gérer la saveur <i>{{name}}</i>",
+        "BTN": {
+          "DELIT": "Supprimer la saveur",
+          "DEL": "Supprimer",
+          "STOP": "Arrêter de cuisiner"
+        }
+      },
+      "DELETE": {
+        "TITLE": "Confirmer la suppression ?",
+        "WARN": "C'est permanent. Une fois la suppression confirmée, revenir en arrière n'est possible qu'avec une DeLorean.",
+        "HINT": "Conseil : Roulez à 88mph.",
+        "BTN": {
+          "YES": "Oui, jetez-le !",
+          "NO": "Finalement, non..."
+        }
+      }
+    }
+  },
   "SETTINGS": {
     "TITLE": "Paramètres",
     "OR": "ou",
@@ -15,20 +67,21 @@
       "DEL": "Supprimer l’historique actuel"
     },
     "THEME": {
-        "TITLE": "Thème"
+      "TITLE": "Thème"
     },
     "FONT": {
-        "TITLE": "Police"
+      "TITLE": "Police"
     },
     "LANG": {
-        "TITLE": "Langue",
-        "BTN": "Changer la langue"
+      "TITLE": "Langue",
+      "BTN": "Changer la langue"
     },
     "ABOUT": {
       "TITLE": "À propos",
       "VERSION": "Version",
       "DEV_BY": "Développé par",
-      "TEXT": "est un outil léger pour tester et organiser vos requêtes HTTP, conçu avec passion."
+      "TEXT": ", un outil léger pour tester et organiser vos requêtes HTTP, développé avec passion."
     }
   }
 }
+  

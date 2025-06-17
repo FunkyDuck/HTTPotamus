@@ -1,4 +1,56 @@
 {
+    "EDITOR": {
+        "BTN": {
+            "ADD": "Add to yours flavors",
+            "RAMEN": "Instant Ramen"
+        },
+        "MODAL": {
+            "TITLE": "Add to flavor",
+            "BTN": {
+                "SAVE": "Add to Flavor",
+                "STOP": "Finaly, no..."
+            }
+        }
+    },
+    "VIEWER": {
+        "TIMER": "Duration",
+        "SIZE": "Size",
+        "STAT": "Status"
+    },
+    "HISTORY": {
+        "TITLE": "History"
+    },
+    "COLLECTION": {
+        "TITLE": "Flavors",
+        "BTN": {
+            "TITLE": "Create Flavor",
+            "HELP": "Create collections for your requests" 
+        },
+        "MODAL": {
+            "CREATE": {
+                "TITLE": "Add new flavor",
+                "ADD": "Create flavor",
+                "STOP": "Stop cooking"
+            },
+            "MANAGE": {
+                "TITLE": "Manage <i>{{name}}</i> flavor",
+                "BTN": {
+                    "DELIT": "Delete it",
+                    "DEL": "Delete",
+                    "STOP": "Stop cooking"
+                }
+            },
+            "DELETE": {
+                "TITLE": "Confirm deleting ?",
+                "WARN": "This is permanent. Once you confirm deletion, going back is only possible with a DeLorean.",
+                "HINT": "HINT : Ride those at 88mph.",
+                "BTN": {
+                    "YES": "Yes, trash it !",
+                    "NO": "Finally, no..."
+                }
+            }
+        }
+    },
     "SETTINGS": {
         "TITLE": "Settings",
         "OR": "or",

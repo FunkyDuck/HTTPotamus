@@ -15,9 +15,9 @@
         </div>
             
         <div>
-            <article id="display-timer">Duration:&nbsp;<b>{{ duration }}ms</b></article>
-            <article id="display-size" [title]="getSizesString()">Size:&nbsp;<b>{{ (headersSize + bodySize).toFixed(2) }}ko</b></article>
-            <article id="display-status" [ngClass]="getClass()">Status:&nbsp;<b>{{ status }} {{ statusText }}</b></article>
+            <article id="display-timer">{{ 'VIEWER.TIMER' | translate }}:&nbsp;<b>{{ duration }}ms</b></article>
+            <article id="display-size" [title]="getSizesString()">{{ 'VIEWER.SIZE' | translate }}:&nbsp;<b>{{ (headersSize + bodySize).toFixed(2) }}ko</b></article>
+            <article id="display-status" [ngClass]="getClass()">{{ 'VIEWER.STAT' | translate }}:&nbsp;<b>{{ status }} {{ statusText }}</b></article>
         </div>
     </div>
     

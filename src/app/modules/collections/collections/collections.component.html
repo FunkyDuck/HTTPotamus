@@ -8,7 +8,7 @@
 
 <ul>
     <li>
-        <button type="button" title="❓ Create collections for your requests" (click)="displayModal = true">Create Flavor</button>
+        <button type="button" title="❓ {{ 'COLLECTION.BTN.HELP' | translate }}" (click)="displayModal = true">{{ 'COLLECTION.BTN.TITLE' | translate }}</button>
     </li>
     
     @for (c of collections; track c) {
@@ -17,7 +17,7 @@
             
             <ul>
                 @for (r of c.requests; track r) {
-                    <li (click)="setRequestEditor(r)"><b class="{{ r.method.toLowerCase() }}">{{ r.method }}</b> <i>{{ formatTitle(r.url) }}</i></li>
+                    <li (click)="setRequestEditor(r)"><b class="{{ r.method.toLowerCase() }}">{{ displayMethod(r.method) }}</b> <i>{{ formatTitle(r.url) }}</i></li>
                 }
             </ul>
         </li>

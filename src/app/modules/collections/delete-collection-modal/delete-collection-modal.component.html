@@ -1,10 +1,10 @@
 <section>
     <div>
-        <h1>Confirm deleting ?</h1>
-        <p><b>This is permanent. Once you confirm deletion, going back is only possible with a DeLorean.</b><br><i>HINT: Ride those at 88mph.</i></p>
+        <h1>{{ 'COLLECTION.MODAL.DELETE.TITLE' | translate }}</h1>
+        <p><b>{{ 'COLLECTION.MODAL.DELETE.WARN' | translate }}</b><br><i>{{ 'COLLECTION.MODAL.DELETE.HINT' | translate }}</i></p>
         <span>
-            <button type="button" (click)="close(true)">Yes, trash it !</button>
-            <button type="button" (click)="close(false)">Finally, no...</button>
+            <button type="button" (click)="close(true)">{{ 'COLLECTION.MODAL.DELETE.BTN.YES' | translate }}</button>
+            <button type="button" (click)="close(false)">{{ 'COLLECTION.MODAL.DELETE.BTN.NO' | translate }}</button>
         </span>
     </div>
 </section>

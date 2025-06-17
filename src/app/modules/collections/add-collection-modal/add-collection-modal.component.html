@@ -1,10 +1,10 @@
 <section>
     <form>
-        <h1>Add new flavor</h1>
+        <h1>{{ 'COLLECTION.MODAL.CREATE.TITLE' | translate }}</h1>
         <input type="text" id="title" name="title" placeholder="Collection Title" (input)="onInput($event)" />
         <div>
-            <button type="button" (click)="addCollection()">Create flavor 🍜</button>
-            <button type="button" class="red" (click)="close()">Stop Cooking 🔪</button>
+            <button type="button" (click)="addCollection()">{{ 'COLLECTION.MODAL.CREATE.ADD' | translate }} 🍜</button>
+            <button type="button" class="red" (click)="close()">{{ 'COLLECTION.MODAL.CREATE.STOP' | translate }} 🔪</button>
         </div>
     </form>
 </section>

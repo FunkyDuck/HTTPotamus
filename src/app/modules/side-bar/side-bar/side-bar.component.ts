@@ -16,11 +16,11 @@ export class SideBarComponent implements OnInit {
   protected view: string;
 
   constructor() {
-    this.view = this.navigate[1];
+    this.view = this.navigate[0];
   }
-
+  
   ngOnInit(): void {
-    
+    this.updatePage(this.view);
   }
 
   updatePage(page: string): void {
@@ -35,9 +35,9 @@ export class SideBarComponent implements OnInit {
 
   setTitle(str: string): string {
     if(str === 'history')
-      return 'History';
+      return 'HISTORY.TITLE';
     if(str === 'collection')
-      return 'Flavors';
+      return 'COLLECTION.TITLE';
     if(str === 'settings')
       return 'SETTINGS.TITLE';
 

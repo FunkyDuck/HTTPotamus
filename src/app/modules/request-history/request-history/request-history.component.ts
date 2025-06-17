@@ -35,4 +35,8 @@ export class RequestHistoryComponent implements OnInit {
     const formattedStr = str.charAt(0).toUpperCase() + str.slice(1, 18) + '…';
     return formattedStr;
   }
+
+  displayMethod(m: string): string {
+    return (m.length <= 4) ? m : m.substring(0, 3) + '.';
+  }
 }
